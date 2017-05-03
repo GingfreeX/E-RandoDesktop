@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.ProductInfoController">
+    <stylesheets>
+        <URL value="@/erando/utils/productinfo.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="pImage" fitHeight="409.0" fitWidth="428.0" layoutX="14.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="pTitre" layoutX="14.0" layoutY="77.0" prefHeight="38.0" prefWidth="197.0">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="pPrix" layoutX="216.0" layoutY="74.0" prefHeight="45.0" prefWidth="197.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="451.0" layoutY="-4.0" prefHeight="602.0" prefWidth="449.0">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="328.0" layoutY="190.0" onAction="#addComment" style="-fx-background-color: #e67e22;" text="Comment" textFill="WHITE">
+               <font>
+                  <Font name="Segoe Marker" size="23.0" />
+               </font></JFXButton>
+            <ScrollPane fx:id="scrollPane" layoutX="-6.0" layoutY="240.0" prefHeight="362.0" prefWidth="449.0">
+               <content>
+                  <VBox fx:id="comments" prefHeight="360.0" prefWidth="448.0" style="-fx-border-color: #E67E22; -fx-border-radius: 2%; -fx-border-width: 2px;">
+                     <children>
+                        <AnchorPane fx:id="comment" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="434.0" style="-fx-background-color: #e67e22;" stylesheets="@../utils/productinfo.css" visible="false">
+                           <children>
+                              <Label fx:id="cuser" layoutX="14.0" layoutY="7.0" prefHeight="18.0" prefWidth="85.0" style="-fx-font-family: Segoe Marker; -fx-font-size: 15px; -fx-font-style: bold;" text="Label" />
+                              <Label fx:id="cdescription" layoutX="47.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="364.0" style="-fx-font-family: Segoe Marker; -fx-font-size: 19px; -fx-font-style: bold;" text="Label" textAlignment="CENTER" />
+                              <Label fx:id="cdate" layoutX="306.0" layoutY="84.0" prefHeight="24.0" prefWidth="105.0" style="-fx-font-family: Marker; -fx-font-size: 14px;" text="Label" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <JFXTextArea fx:id="commentDescription" focusColor="#e67e22" layoutX="14.0" layoutY="8.0" prefHeight="174.0" prefWidth="377.0" stylesheets="@../utils/productinfo.css" unFocusColor="#e67e22" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="likeImage" fitHeight="45.0" fitWidth="65.0" layoutX="390.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/icon.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="likeButton" layoutX="390.0" layoutY="545.0" onAction="#likeProduct" opacity="0.0" prefHeight="29.0" prefWidth="45.0" style="-fx-background-color: e67e22;" />
+      <Label fx:id="likesNumber" layoutX="355.0" layoutY="545.0" prefHeight="31.0" prefWidth="35.0" textAlignment="RIGHT" textFill="#e67e22">
+         <font>
+            <Font name="Segoe Marker" size="21.0" />
+         </font>
+      </Label>
+      <JFXCheckBox fx:id="subscribed" layoutX="37.0" layoutY="550.0" onAction="#subscribe" text="Abonnez-vous à ce type" textFill="#e67e22">
+         <font>
+            <Font name="Segoe Marker" size="19.0" />
+         </font>
+      </JFXCheckBox>
+   </children>
+</AnchorPane>
