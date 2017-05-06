@@ -37,6 +37,16 @@ public class User {
         this.email = email;
     }
 
+    public User(int id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
+
+    public User(int id) {
+        this.id = id;
+    }
+    
+
 
     public User(String name, String password, String email,String Role) {
         this.nom = name;
@@ -72,7 +82,7 @@ public class User {
         this.Role=Role;
         this.numTel=numTel;
     }
-    public User(int id ,String nom, String prenom, int age, String Descrption, String password, String email,String Role,String imagePath) {
+         public User(int id ,String nom, String prenom, int age, String Descrption, String password, String email,String Role,String imagePath) {
         this.id=id;
         this.nom = nom;
         this.prenom = prenom;
@@ -83,12 +93,6 @@ public class User {
         this.Role=Role;
         this.ImagePath=imagePath;
        
-    }
-    public User(int id ,String nom, String prenom,String email) {
-        this.id=id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
     }
     
 

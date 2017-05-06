@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXPopup?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXSnackbar?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.gui.InterfaceRandoController">
+   <children>
+      <AnchorPane id="AnchorPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
+          <children>
+            <ScrollPane prefHeight="800.0" prefWidth="1280.0">
+               <content>
+                  <StackPane prefHeight="853.0" prefWidth="1280.0">
+                     <children>
+                        <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="819.0" prefWidth="933.0" spacing="20.0">
+                           <children>
+                              <Pane fx:id="annoncePane" prefHeight="714.0" prefWidth="933.0" style="-fx-background-color: #ffffff;">
+                                 <padding>
+                                    <Insets bottom="10.0" left="100.0" right="100.0" top="20.0" />
+                                 </padding>
+                                 <effect>
+                                     <DropShadow blurType="GAUSSIAN" />
+                                 </effect>
+                                 <children>
+                        		
+                                                                                          <GoogleMapView fx:id="mapView" prefHeight="348.0" prefWidth="932.0">
+                                       <effect>
+                                          <DropShadow blurType="ONE_PASS_BOX" />
+                                       </effect>
+                                    </GoogleMapView>
+                        			<!--<JFXListView fx:id="list1" layoutX="780.0" prefHeight="44.0" prefWidth="153.0" styleClass="custom-jfx-list-view">
+                        			
+                                                            			<JFXListView fx:id="subList" styleClass="sublist">
+                                                                              				<groupnode>
+                                                                              					<Label styleClass="sub-label"> Option </Label>
+                                                                              				</groupnode>
+                                                                              				
+                                                                              			</JFXListView>
+                                                                              			
+                                                                              			
+                                                                              		</JFXListView>-->
+                        <JFXRippler fx:id="rippler1" layoutX="890.0" maskType="CIRCLE" AnchorPane.leftAnchor="890.0" AnchorPane.topAnchor="0.0">
+                        		</JFXRippler>
+                                    <Label fx:id="fromToLabel" alignment="CENTER" layoutX="30.0" layoutY="278.0" prefHeight="53.0" prefWidth="364.0" text="Tunis -&gt; Sfax">
+                                       <font>
+                                          <Font name="Roboto Bold" size="43.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="distanceLabel" layoutX="196.0" layoutY="566.0" prefHeight="43.0" prefWidth="142.0" text="Distance : 40km">
+                                 <font>
+                                    <Font name="Roboto" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="prixLabel" alignment="CENTER" layoutX="782.0" layoutY="363.0" prefHeight="43.0" prefWidth="61.0" text="10dt">
+                                 <font>
+                                    <Font name="Roboto Bold" size="26.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateDepartLabel" layoutX="195.0" layoutY="363.0" prefHeight="43.0" prefWidth="399.0" text="Date Depart : 10-05-2017" textOverrun="CLIP">
+                                 <font>
+                                    <Font name="Roboto Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="placesLabel" alignment="CENTER" layoutX="889.0" layoutY="460.0" prefHeight="43.0" prefWidth="30.0" text="2">
+                                 <font>
+                                    <Font name="Roboto Bold" size="23.0" />
+                                 </font>
+                              </Label>
+                              <Separator fx:id="separator" layoutX="183.0" layoutY="360.0" orientation="VERTICAL" prefHeight="341.0" prefWidth="1.0" />
+                              <Label fx:id="prixLabel1" layoutX="750.0" layoutY="407.0" prefHeight="43.0" prefWidth="147.0" text="Prix/Personne">
+                                 <font>
+                                    <Font name="Roboto Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="placesLabel1" layoutX="639.0" layoutY="460.0" prefHeight="43.0" prefWidth="257.0" text="Nombre de places restants:">
+                                 <font>
+                                    <Font name="Roboto" size="20.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="userImageView" fitHeight="110.0" fitWidth="123.0" layoutX="50.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/profil.png" />
+                                       </image>
+                              </ImageView>
+                              <Label fx:id="driverNameLabel" alignment="CENTER" layoutX="10.0" layoutY="476.0" prefHeight="25.0" prefWidth="173.0" text="Les tickets sont disponible sur">
+                                 <font>
+                                    <Font name="Roboto" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="experianceLabel" alignment="CENTER" layoutY="551.0" prefHeight="21.0" prefWidth="159.0" text="Experience">
+                                 <font>
+                                    <Font name="Roboto" size="16.0" />
+                                 </font>
+                              </Label>
+                                    <ImageView fx:id="citere1Label" fitHeight="26.0" fitWidth="26.0" layoutX="703.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/smoking.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="citere2Label" fitHeight="26.0" fitWidth="26.0" layoutX="757.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/noanimal.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="citere3Label" fitHeight="26.0" fitWidth="26.0" layoutX="802.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/music.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="citere4Label" fitHeight="26.0" fitWidth="26.0" layoutX="848.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/littletalking.png" />
+                                       </image>
+                                    </ImageView>
+                                    
+                                                                                                            
+                                    <JFXRippler fx:id="favoriteToggle" layoutX="149.0" layoutY="601.0" position="BACK" styleClass="icons-rippler1" />
+                                    <JFXSnackbar fx:id="snackbar" layoutX="256.0" layoutY="256.0" prefWidth="300">
+                                       <stylesheets>
+                                          <URL value="@../resources/css/jfoenix-main-demo.css" />
+                                          <URL value="@../resources/css/jfoenix-components.css" />
+                                       </stylesheets>
+                                    </JFXSnackbar>
+                                    <Label fx:id="tempRest" layoutX="195.0" layoutY="407.0" prefHeight="43.0" prefWidth="167.0" text="Description  :" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="Roboto Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="tempRest1" layoutX="380.0" layoutY="406.0" prefHeight="21.0" prefWidth="7.0" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="Roboto Bold" size="31.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="voitureLabel" layoutX="196.0" layoutY="609.0" prefHeight="43.0" prefWidth="142.0" text="type : ">
+                                       <font>
+                                          <Font name="Roboto" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink layoutX="12.0" layoutY="506.0" text="https://www.teskerti.tn/" />
+                                    <TextArea fx:id="DescriptionArea" layoutX="196.0" layoutY="453.0" prefHeight="105.0" prefWidth="432.0" />
+                                    <ImageView fitHeight="100.0" fitWidth="159.0" layoutX="391.0" layoutY="606.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/baggage.png" />
+                                       </image>
+                                    </ImageView>
+                                    <JFXButton fx:id="reserverButton" alignment="CENTER" buttonType="RAISED" layoutX="394.0" layoutY="608.0" lineSpacing="1.0" onAction="#demandereserverAction" opacity="0.09" prefHeight="86.0" prefWidth="95.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Reserver" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </JFXButton>
+                                    
+                                                                                                         </children>
+                              </Pane>
+                           </children>
+                           <StackPane.margin>
+                              <Insets top="100.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </content>
+            </ScrollPane>
+      
+      			<JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="70.0" prefHeight="713.0" prefWidth="173.0" />
+                  <JFXHamburger fx:id="hamburger" layoutY="30.0" prefHeight="0.0" prefWidth="0.0" />
+              
+              <JFXPopup fx:id="popup">
+      		<content>
+      			<JFXListView fx:id="popupList" styleClass="popup-list-view">
+				
+			</JFXListView>
+      		</content>
+      	</JFXPopup>
+            
+            <JFXDialog fx:id="dialog">
+      		<JFXDialogLayout>
+      			<heading>
+      				<Label>Attention!</Label>
+      			</heading>
+      			<body>
+      				<Label>Voulez-vous vraiment supprimer cette annonce?.</Label>
+      			</body>
+      			<actions>
+      				<JFXButton fx:id="acceptButton" styleClass="dialog-accept">Supprimer
+				</JFXButton>
+                                      <JFXButton fx:id="closetButton" styleClass="dialog-accept">Fermer
+				</JFXButton>
+      			</actions>
+      		</JFXDialogLayout>
+      	</JFXDialog>
+            <ImageView fitHeight="62.0" fitWidth="69.0" layoutX="51.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnreturn" buttonType="RAISED" layoutX="55.0" layoutY="10.0" onAction="#returnAction" opacity="0.0" prefHeight="52.0" prefWidth="56.0" style="-fx-background-color: #2196f3;" text="retourner" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+          </children>
+      </AnchorPane>
+   </children>
+</StackPane>
