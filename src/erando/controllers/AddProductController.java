@@ -25,7 +25,6 @@ import erando.services.impl.Sms;
 import erando.services.impl.ProductService;
 import erando.services.impl.SmsService;
 import erando.services.impl.mailToSubs;
-import erando.services.interfaces.IService;
 import erando.services.interfaces.ISms;
 import java.io.File;
 import java.io.FileInputStream;
@@ -62,6 +61,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
+import erando.services.interfaces.IShopService;
 
 /**
  * FXML Controller class
@@ -120,7 +120,7 @@ public class AddProductController implements Initializable {
         Product p = new Product();
         Sms sms = new Sms() ;
         ISms smsservice = new SmsService();
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY:MM/HH:mm:ss");
         

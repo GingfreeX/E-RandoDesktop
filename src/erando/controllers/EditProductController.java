@@ -13,7 +13,6 @@ import com.jfoenix.controls.JFXTextField;
 import erando.models.Parameters;
 import erando.Product;
 import erando.services.impl.ProductService;
-import erando.services.interfaces.IService;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +39,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import erando.services.interfaces.IShopService;
 /**
  * FXML Controller class
  *
@@ -75,7 +75,7 @@ public class EditProductController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
            
-            IService productService = new ProductService();
+            IShopService productService = new ProductService();
             List<Product> list = productService.getOwn(Parameters.user.getId());
             ObservableList<String> l = FXCollections.observableArrayList();
             for (Product p : list) {
@@ -91,7 +91,7 @@ public class EditProductController implements Initializable {
     }
     @FXML 
     public void handleMouseClick() {
-    IService productService = new ProductService();
+    IShopService productService = new ProductService();
     Product p = (Product)productService.findByTitle(editList.getSelectionModel().getSelectedItem().toString());
     System.out.println(p);
     pTitre.setText(p.getTitre());
@@ -127,7 +127,7 @@ public class EditProductController implements Initializable {
     @FXML
     private void editProductAction(ActionEvent event) {
         Product p = new Product();
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY:MM/HH:mm:ss");
         
@@ -154,7 +154,7 @@ public class EditProductController implements Initializable {
         }
     }
     private void refreshListView() {
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
             List<Product> list = productService.getTitles();
             ObservableList<String> l = FXCollections.observableArrayList();
             for (Product p : list) {
@@ -165,7 +165,7 @@ public class EditProductController implements Initializable {
     }
     @FXML
     private void removeProductAction(ActionEvent event) {
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
         productService.delete(idP);
         refreshListView();
     }

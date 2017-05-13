@@ -12,7 +12,6 @@ import com.jfoenix.svg.SVGGlyph;
 import erando.models.Parameters;
 import erando.Product;
 import erando.services.impl.ProductService;
-import erando.services.interfaces.IService;
 import java.io.IOException;
 import java.net.URL;
 //import io.datafx.controller.ViewController;
@@ -52,6 +51,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import erando.services.interfaces.IShopService;
 
 //@ViewController(value = "/fxml/ui/Masonry.fxml", title = "Material Design Example")
 public class MasonryPaneController implements Initializable {
@@ -80,7 +80,7 @@ public class MasonryPaneController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        IService pservice = new ProductService();
+        IShopService pservice = new ProductService();
         List<Product> pList = pservice.getAll();
         int x = pservice.count();
         foundX.setText("Totale :"+x);
@@ -343,7 +343,7 @@ public class MasonryPaneController implements Initializable {
     }
     @FXML
     private void seearchAction(KeyEvent event) {
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
         System.err.println("trying to search for :"+toFind.getText().toString());
         pList = productService.find(toFind.getText().toString());
         x = pList.size();

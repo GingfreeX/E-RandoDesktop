@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import erando.services.impl.ProductService;
-import erando.services.interfaces.IService;
 import java.io.IOException;
 import javafx.scene.control.Label;
 import java.net.URL;
@@ -26,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javax.xml.bind.annotation.XmlElementDecl;
+import erando.services.interfaces.IShopService;
 /**
  *
  * @author F.Mouhamed
@@ -57,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
             HamburgerBasicCloseTransition transition = new HamburgerBasicCloseTransition(menu);
             transition.setRate(-1);
             window.getChildren().setAll(windoww);
-            IService productService = new ProductService();
+            IShopService productService = new ProductService();
             drawer.setSidePane(box);
             drawer.setOverLayVisible(false);
             for(Node node : box.getChildren()){

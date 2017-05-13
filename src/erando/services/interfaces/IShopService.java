@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
  *
  * @author Ging
  */
-public interface IService <T, R> {
+public interface IShopService <T, R> {
 
     void add(T t);
 

@@ -7,7 +7,6 @@ package erando.services.impl;
 
 import erando.Product;
 import erando.models.ProductComment;
-import erando.services.interfaces.IService;
 import erando.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,12 +18,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import erando.services.interfaces.IShopService;
 
 /**
  *
  * @author Ging
  */
-public class ProductCommentService implements IService<ProductComment, Integer> {
+public class ProductCommentService implements IShopService<ProductComment, Integer> {
      private Connection connection;
 
     public ProductCommentService() {

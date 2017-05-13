@@ -18,7 +18,6 @@ import erando.Product;
 import erando.models.ProductComment;
 import erando.services.impl.ProductCommentService;
 import erando.services.impl.ProductService;
-import erando.services.interfaces.IService;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -57,6 +56,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.annotation.PostConstruct;
 import org.controlsfx.control.Notifications;
+import erando.services.interfaces.IShopService;
 
 /**
  * FXML Controller class
@@ -107,7 +107,7 @@ public class ProductInfoController implements Initializable {
 
         idProduit =Parameters.idP;
         pType = Parameters.typeP;
-         IService productService = new ProductService();
+         IShopService productService = new ProductService();
             if (productService.checkifLiked(idProduit, Parameters.user.getId())){ 
             Image image = new Image("file:///C:/Users/F.Mouhamed/Desktop/Esprit/ERandoPi/src/icons/iconLiked.png");
             likeImage.setImage(image);
@@ -125,7 +125,7 @@ public class ProductInfoController implements Initializable {
         idProduit=x;
         ArrayList<Node> children = new ArrayList<>();
         children.clear();
-        IService commentService = new ProductCommentService();
+        IShopService commentService = new ProductCommentService();
         List<ProductComment> cList = commentService.getOwn(idProduit);
 
         for (ProductComment p : cList) {
@@ -168,7 +168,7 @@ public class ProductInfoController implements Initializable {
     void refreshComments(){
         ArrayList<Node> children = new ArrayList<>();
         children.clear();
-        IService commentService = new ProductCommentService();
+        IShopService commentService = new ProductCommentService();
         List<ProductComment> cList = commentService.getOwn(idProduit);
 
         for (ProductComment p : cList) {
@@ -217,7 +217,7 @@ public class ProductInfoController implements Initializable {
     }
     @FXML
     void addComment(ActionEvent event) {
-        IService commentService = new ProductCommentService();
+        IShopService commentService = new ProductCommentService();
         ProductComment cmt = new ProductComment();
         cmt.setDescription(commentDescription.getText().toString());
         cmt.setIdProduct(idProduit);
@@ -239,7 +239,7 @@ public class ProductInfoController implements Initializable {
     }
      @FXML
     void likeProduct(ActionEvent event) {
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
        if (!productService.checkifLiked(idProduit, Parameters.user.getId())){
         productService.like(idProduit, Parameters.user.getId());
         Image image = new Image("file:///C:/Users/F.Mouhamed/Desktop/Esprit/ERandoPi/src/icons/iconLiked.png");
@@ -254,12 +254,12 @@ public class ProductInfoController implements Initializable {
        }
     }
     void checkLikes() {
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
         likesNumber.setText(""+productService.countLikes(idProduit));
     }
      @FXML
     void subscribe(ActionEvent event) {
-        IService productService = new ProductService();
+        IShopService productService = new ProductService();
         if (subscribed.isSelected()){
             productService.subscribe(Parameters.user.getId(),Parameters.user.getEmail(),pType);
         }
@@ -268,7 +268,7 @@ public class ProductInfoController implements Initializable {
         }
     }
     void deletecomment(int idComment){
-        IService commentService = new ProductCommentService();
+        IShopService commentService = new ProductCommentService();
         commentService.delete(idComment);
         comments.getChildren().clear();
         refreshComments();
