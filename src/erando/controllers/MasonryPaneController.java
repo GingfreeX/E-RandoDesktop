@@ -10,7 +10,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
 import erando.models.Parameters;
-import erando.Product;
+import erando.models.Product;
 import erando.services.impl.ProductService;
 import java.io.IOException;
 import java.net.URL;

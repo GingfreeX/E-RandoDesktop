@@ -14,7 +14,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
 import erando.models.Parameters;
-import erando.Product;
+import erando.models.Product;
 import erando.models.ProductComment;
 import erando.services.impl.ProductCommentService;
 import erando.services.impl.ProductService;

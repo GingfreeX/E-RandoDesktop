@@ -20,7 +20,7 @@ import com.restfb.Version;
 import com.restfb.types.FacebookType;
 import com.restfb.types.User;
 import erando.models.Parameters;
-import erando.Product;
+import erando.models.Product;
 import erando.services.impl.Sms;
 import erando.services.impl.ProductService;
 import erando.services.impl.SmsService;

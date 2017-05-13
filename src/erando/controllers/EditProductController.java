@@ -11,7 +11,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import erando.models.Parameters;
-import erando.Product;
+import erando.models.Product;
 import erando.services.impl.ProductService;
 import java.io.File;
 import java.io.IOException;
