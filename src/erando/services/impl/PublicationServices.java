@@ -5,7 +5,7 @@
  */
 package erando.services.impl;
 
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 import erando.models.User;
 import erando.services.interfaces.IPublicationService;
 
@@ -30,7 +30,7 @@ private Connection connection;
     }
 
     @Override
-    public void add(Publication pub) {
+    public void add(PublicationGroup pub) {
         try{
             System.out.println(pub.getUser().getId());
             System.out.println(pub.getDescription());
@@ -55,7 +55,7 @@ private Connection connection;
     }
 
     @Override
-    public void update(Publication pub) {
+    public void update(PublicationGroup pub) {
              try{
         String req = "update publication_e SET user_id=?,description="+pub.getDescription()+",image=?,section=?,datepub=? where id = ?";
         PreparedStatement st = connection.prepareStatement(req);
@@ -88,8 +88,8 @@ private Connection connection;
     }
 
     @Override
-    public List<Publication> getAll() {
-         List<Publication> publications = new ArrayList<Publication>();
+    public List<PublicationGroup> getAll() {
+         List<PublicationGroup> publications = new ArrayList<PublicationGroup>();
           try {
             String req = "select * from publication_e";
             PreparedStatement ps = connection.prepareStatement(req);
@@ -97,7 +97,7 @@ private Connection connection;
             
             while (rs.next()) {
             
-     Publication publication = new Publication(rs.getInt(1),rs.getString(3), rs.getString(5), rs.getDate(6),new UserServices().getUserbyId(rs.getInt(2)),rs.getString(4));
+     PublicationGroup publication = new PublicationGroup(rs.getInt(1),rs.getString(3), rs.getString(5), rs.getDate(6),new UserServices().getUserbyId(rs.getInt(2)),rs.getString(4));
      publications.add(publication);
             }
         } catch (SQLException ex) {
@@ -107,9 +107,9 @@ private Connection connection;
     }
 
     @Override
-    public Publication getPublicationById(Integer id) {
+    public PublicationGroup getPublicationById(Integer id) {
         
-         Publication publication = null ;
+         PublicationGroup publication = null ;
         try{
     String req = "select * from publication_e  where id=? ";
    PreparedStatement st = connection.prepareStatement(req);
@@ -117,7 +117,7 @@ private Connection connection;
    ResultSet rs = st.executeQuery();
    
     while(rs.next()){
-   publication = new Publication(rs.getInt(1),rs.getString(3), rs.getString(5), rs.getDate(6),new UserServices().getUserbyId(rs.getInt(2)));
+   publication = new PublicationGroup(rs.getInt(1),rs.getString(3), rs.getString(5), rs.getDate(6),new UserServices().getUserbyId(rs.getInt(2)));
          
     }
    }catch(Exception a){

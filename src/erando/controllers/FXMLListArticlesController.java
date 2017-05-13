@@ -7,7 +7,7 @@ package erando.controllers;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 import erando.models.User;
 import erando.services.impl.PublicationServices;
 import erando.services.interfaces.IService;
@@ -46,15 +46,15 @@ import erando.services.interfaces.IPublicationGroupService;
 public class FXMLListArticlesController implements Initializable {
 
     @FXML
-    private TableView<Publication> tableview;
+    private TableView<PublicationGroup> tableview;
     
     @FXML
-    private TableColumn<Publication, String> sectioncolumn;
+    private TableColumn<PublicationGroup, String> sectioncolumn;
 
     @FXML
-    private TableColumn<Publication, String> Descriptioncolumn;
+    private TableColumn<PublicationGroup, String> Descriptioncolumn;
      @FXML
-    private TableColumn<Publication, String> imagecolumn;
+    private TableColumn<PublicationGroup, String> imagecolumn;
     
  
     @FXML
@@ -103,7 +103,7 @@ int id = Integer.parseInt(hiddenid.getText());
 
       }else{
         IPublicationGroupService publicationservice = new PublicationServices();
-        Publication publication = publicationservice.getPublicationById(Integer.parseInt(hiddenid.getText()));
+        PublicationGroup publication = publicationservice.getPublicationById(Integer.parseInt(hiddenid.getText()));
         publication.setSection(Section.getValue());
          publication.setDescription(description.getText()); if(selectedfile==null){
         publication.setImagepath(null);
@@ -137,7 +137,7 @@ int id = Integer.parseInt(hiddenid.getText());
                 "chasse","peche","camping"
         );
     tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection)->{
-      ObservableList<Publication>   selecteditem,allitems;
+      ObservableList<PublicationGroup>   selecteditem,allitems;
       allitems = tableview.getItems();
        selecteditem = tableview.getSelectionModel().getSelectedItems();
        
@@ -158,13 +158,13 @@ int id = Integer.parseInt(hiddenid.getText());
     public void LoadData(){
         
     }
-    public ObservableList<Publication> getMyPublications(){
+    public ObservableList<PublicationGroup> getMyPublications(){
         int id = User.getIdofuserAlreadyloggedin();
         IService publicationsService = new PublicationServices();
-         List<Publication> List1 = publicationsService.getAll();
-        List <Publication> List2 = List1.stream().filter(x->x.getUser().getId()==id).collect(Collectors.toList());
+         List<PublicationGroup> List1 = publicationsService.getAll();
+        List <PublicationGroup> List2 = List1.stream().filter(x->x.getUser().getId()==id).collect(Collectors.toList());
           List2.forEach(System.out::println);
-         ObservableList<Publication> listpub =FXCollections.observableArrayList(List2);
+         ObservableList<PublicationGroup> listpub =FXCollections.observableArrayList(List2);
    return  listpub ;
         
     }

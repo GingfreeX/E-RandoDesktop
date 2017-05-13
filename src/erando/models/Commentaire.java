@@ -17,13 +17,13 @@ public class Commentaire {
     private int id;
     private String commenttxt;
     private Membre user;
-    private Publication pub;
+    private PublicationGroup pub;
     private Date date_pub;
 
     public Commentaire() {
     }
 
-    public Commentaire(String commenttxt, Membre user, Publication pub) {
+    public Commentaire(String commenttxt, Membre user, PublicationGroup pub) {
         this.commenttxt = commenttxt;
         this.user = user;
         this.pub = pub;
@@ -38,7 +38,7 @@ public class Commentaire {
     }
 
     
-    public Commentaire(int id, String commenttxt, Membre user, Publication pub) {
+    public Commentaire(int id, String commenttxt, Membre user, PublicationGroup pub) {
         this.id = id;
         this.commenttxt = commenttxt;
         this.user = user;
@@ -56,7 +56,7 @@ public class Commentaire {
         this.user = user;
     }
 
-    public Commentaire(int id, String commenttxt, Publication pub) {
+    public Commentaire(int id, String commenttxt, PublicationGroup pub) {
         this.id = id;
         this.commenttxt = commenttxt;
         this.pub = pub;
@@ -96,11 +96,11 @@ public class Commentaire {
         this.user = user;
     }
 
-    public Publication getPub() {
+    public PublicationGroup getPub() {
         return pub;
     }
 
-    public void setPub(Publication pub) {
+    public void setPub(PublicationGroup pub) {
         this.pub = pub;
     }
 

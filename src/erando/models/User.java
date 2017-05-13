@@ -5,29 +5,35 @@
  */
 package erando.models;
 
+
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Logger;
+import erando.chat.client.Status;
 
 /**
  *
  * @author cimope
  */
-public class User {
+public class User implements Serializable{
     private int id ; 
     private String  nom ; 
     private String  prenom ;
     private int age;
     private String Descrption;
     private String password;
-    private String enabled;
+    private int enabled;
     private String Role ;
     private String ImagePath;
     private int numTel;
-    private ArrayList<User> listinvitation;
-    private ArrayList<User> listAmis;
+    private String listinvitation;
+    private String listAmis;
     private String email; 
     private static int idofuserAlreadyloggedin;
     private static String myemail;
+    private Status status;
+
 
     public User() {
     }
@@ -72,23 +78,19 @@ public class User {
         this.Role=Role;
         this.numTel=numTel;
     }
-    public User(int id ,String nom, String prenom, int age, String Descrption, String password, String email,String Role,String imagePath) {
+         public User(int id ,String nom, String prenom, int age, String Descrption,int enabled ,String password, String email,String Role,String listeamis,String imagePath) {
         this.id=id;
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.Descrption = Descrption;
+        this.enabled=enabled;
         this.password = password;
         this.email = email;
         this.Role=Role;
+        this.listAmis=listeamis;
         this.ImagePath=imagePath;
        
-    }
-    public User(int id ,String nom, String prenom,String email) {
-        this.id=id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
     }
     
 
@@ -124,27 +126,27 @@ public class User {
         this.password = password;
     }
 
-    public String getEnabled() {
+    public int getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(String enabled) {
+    public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
 
-    public ArrayList<User> getListinvitation() {
+    public String getListinvitation() {
         return listinvitation;
     }
 
-    public void setListinvitation(ArrayList<User> listinvitation) {
+    public void setListinvitation(String listinvitation) {
         this.listinvitation = listinvitation;
     }
 
-    public ArrayList<User> getListAmis() {
+    public String getListAmis() {
         return listAmis;
     }
 
-    public void setListAmis(ArrayList<User> listAmis) {
+    public void setListAmis(String listAmis) {
         this.listAmis = listAmis;
     }
 
@@ -212,10 +214,23 @@ public class User {
         this.numTel = numTel;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+
+
+
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", Descrption=" + Descrption + ", password=" + password + ", enabled=" + enabled + ", listinvitation=" + listinvitation + ", listAmis=" + listAmis + ", email=" + email + '}';
+        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", Descrption=" + Descrption + ", password=" + password + ", enabled=" + enabled + ", Role=" + Role + ", ImagePath=" + ImagePath + ", numTel=" + numTel + ", listinvitation=" + listinvitation + ", listAmis=" + listAmis + ", email=" + email + '}';
     }
+
+   
    
     
 }

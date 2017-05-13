@@ -7,7 +7,7 @@ package erando.services.impl;
 
 import erando.models.Groupe;
 import erando.models.Membre;
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 import erando.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.Date;
@@ -34,7 +34,7 @@ public class PublicationService implements IPublicationGroupService {
     }
 
     @Override
-    public void add(Publication pub) {
+    public void add(PublicationGroup pub) {
         try {
             String req = "insert into publication(user_id,group_id,description,datepub,photo,nbrjaime) values (?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(req);
@@ -60,7 +60,7 @@ public class PublicationService implements IPublicationGroupService {
     }
 
     @Override
-    public void update(Publication pub) {
+    public void update(PublicationGroup pub) {
 
         try {
             String req = "update publication set description = ? , datepub = ? where id = ?";
@@ -90,15 +90,15 @@ public class PublicationService implements IPublicationGroupService {
     }
 
     @Override
-    public List<Publication> getAll() {
-        List<Publication> pubs = new ArrayList<>();
+    public List<PublicationGroup> getAll() {
+        List<PublicationGroup> pubs = new ArrayList<>();
         try {
 
             String req = "select * from publication";
             PreparedStatement ps = connection.prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Publication pub = new Publication(rs.getString(2), rs.getDate(7), new Membre(rs.getInt(2)), new Groupe(rs.getInt(3)));
+                PublicationGroup pub = new PublicationGroup(rs.getString(2), rs.getDate(7), new Membre(rs.getInt(2)), new Groupe(rs.getInt(3)));
                 System.out.println(pub);
                 pubs.add(pub);
             }
@@ -109,8 +109,8 @@ public class PublicationService implements IPublicationGroupService {
     }
 
     @Override
-    public Publication getPubById(int id) {
-        Publication p = new Publication();
+    public PublicationGroup getPubById(int id) {
+        PublicationGroup p = new PublicationGroup();
         try {
             String req = "select * from publication where id =?";
             PreparedStatement ps = connection.prepareStatement(req);
@@ -131,8 +131,8 @@ public class PublicationService implements IPublicationGroupService {
     }
 
     @Override
-    public List<Publication> getPubOrderByDate(Groupe groupe) {
-        List<Publication> pubs = new ArrayList<>();
+    public List<PublicationGroup> getPubOrderByDate(Groupe groupe) {
+        List<PublicationGroup> pubs = new ArrayList<>();
         try {
 
             String req = "select * from publication where group_id = ? order by datepub DESC";
@@ -140,7 +140,7 @@ public class PublicationService implements IPublicationGroupService {
             ps.setInt(1, groupe.getId());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Publication p = new Publication(rs.getInt(1), rs.getString(4), rs.getDate(5), new Membre(rs.getInt(2)), rs.getString(6),rs.getInt(7));
+                PublicationGroup p = new PublicationGroup(rs.getInt(1), rs.getString(4), rs.getDate(5), new Membre(rs.getInt(2)), rs.getString(6),rs.getInt(7));
                 pubs.add(p);
             }
         } catch (SQLException ex) {
@@ -150,7 +150,7 @@ public class PublicationService implements IPublicationGroupService {
     }
 
     @Override
-    public void updateNbrLike(Publication publication) {
+    public void updateNbrLike(PublicationGroup publication) {
         try {
             String req = "update publication set nbrjaime = nbrjaime+1  where id = ?";
             PreparedStatement ps = connection.prepareStatement(req);

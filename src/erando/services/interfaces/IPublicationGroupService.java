@@ -6,18 +6,18 @@
 package erando.services.interfaces;
 
 import erando.models.Groupe;
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 import java.util.List;
 
 /**
  *
  * @author wassim
  */
-public interface IPublicationGroupService extends IGroupService<Publication, Integer>{
+public interface IPublicationGroupService extends IGroupService<PublicationGroup, Integer>{
     
-   Publication getPubById(int id);
-   List<Publication> getPubOrderByDate(Groupe groupe);
-   void updateNbrLike(Publication publication);
+   PublicationGroup getPubById(int id);
+   List<PublicationGroup> getPubOrderByDate(Groupe groupe);
+   void updateNbrLike(PublicationGroup publication);
 
     
 }

@@ -9,7 +9,7 @@ import erando.models.Commentaire;
 import erando.models.Groupe;
 import erando.models.ImageG;
 import erando.models.Membre;
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 import erando.services.impl.CommentaireService;
 import erando.services.impl.GroupeService;
 import erando.services.impl.ImageService;
@@ -132,7 +132,7 @@ public class Groupe_homeController implements Initializable {
     ImageView imagev, deleteicon, updateicon, uploadicon, postimg, imgUserlogged;
     Button btndelete, btnupdate, btnjaime, btncomment, btnpostcomment;
     ListView<Commentaire> lscomment;
-    Publication p;
+    PublicationGroup p;
     IPublicationGroupService ps = new PublicationService();
     IMembreService ms = new MembreService();
     GroupeService gs = new GroupeService();
@@ -175,7 +175,7 @@ public class Groupe_homeController implements Initializable {
             notif.show();
         } else {
             lblerreur.setText("");
-            p = new Publication(txtpublication.getText(), m, g, "");
+            p = new PublicationGroup(txtpublication.getText(), m, g, "");
             ps.add(p);
 
             Image i = new Image("/erando/images/tick.png");
@@ -272,7 +272,7 @@ public class Groupe_homeController implements Initializable {
 
         File file = fileChooser.showOpenDialog(null);
 
-        p = new Publication(txtpublication.getText(), m, g, file.getName());
+        p = new PublicationGroup(txtpublication.getText(), m, g, file.getName());
         ps.add(p);
         Notifications notif = Notifications.create()
                 .title("Succées")
@@ -304,7 +304,7 @@ public class Groupe_homeController implements Initializable {
     }
 
     public void loadpublication() {
-        List<Publication> lp = ps.getPubOrderByDate(g);
+        List<PublicationGroup> lp = ps.getPubOrderByDate(g);
         for (int i = 0; i < lp.size(); i++) {
             // lp.get(i).getCreateur().getId() retourne id dde user
             // getuser retroune un objet user
@@ -322,7 +322,7 @@ public class Groupe_homeController implements Initializable {
             btnjaime = new Button("J'aime");
             btnjaime.getStyleClass().add("likebtn");
             btnjaime.setId(String.valueOf(lp.get(i).getId()));
-            Publication pub = lp.get(i);
+            PublicationGroup pub = lp.get(i);
 
             btnjaime.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -453,7 +453,7 @@ public class Groupe_homeController implements Initializable {
                     dialog.getDialogPane().setMinWidth(500);
                     Optional<String> result = dialog.showAndWait();
                     if (result.isPresent()) {
-                        Publication p = ps.getPubById(Integer.parseInt(((Control) event.getSource()).getId()));
+                        PublicationGroup p = ps.getPubById(Integer.parseInt(((Control) event.getSource()).getId()));
                         p.setDescription(result.get());
                         ps.update(p);
                         Alert info = new Alert(AlertType.INFORMATION);

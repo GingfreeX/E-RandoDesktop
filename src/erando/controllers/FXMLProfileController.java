@@ -9,7 +9,7 @@ package erando.controllers;
 import erando.chat.client.ChatController;
 import erando.chat.client.Listener;
 import static erando.chat.client.LoginController.con;
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 import erando.models.User;
 import erando.services.impl.PublicationServices;
 import erando.services.impl.UserServices;
@@ -163,7 +163,7 @@ public class FXMLProfileController implements Initializable {
 
     public void loadpublication() {
         IService publicationservices = new PublicationServices();
-        List<Publication> listdespublication = publicationservices.getAll();
+        List<PublicationGroup> listdespublication = publicationservices.getAll();
         Label lblusername;
         Label lblusername1;
         Label lbldescription;
@@ -172,7 +172,7 @@ public class FXMLProfileController implements Initializable {
         ImageView profilepic;
 
         VBox vb = new VBox();
-        for (Publication pub : listdespublication) {
+        for (PublicationGroup pub : listdespublication) {
             lblusername = new Label("Publier Par :  " + pub.getUser().getNom());
             lbldescription = new Label(pub.getDescription());
 

@@ -7,7 +7,7 @@ package erando.services.impl;
 
 import erando.models.Commentaire;
 import erando.models.Membre;
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 import erando.services.interfaces.ICommentaireService;
 import erando.techniques.DataSource;
 import java.sql.Connection;
@@ -87,7 +87,7 @@ Commentaire c = new Commentaire();
                 c.setId(rs.getInt(1));
                 c.setCommenttxt(rs.getString(2));
                 c.setUser(new Membre(rs.getInt(3)));
-                c.setPub(new Publication(rs.getInt(4)));
+                c.setPub(new PublicationGroup(rs.getInt(4)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

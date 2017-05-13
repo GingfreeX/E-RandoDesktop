@@ -5,12 +5,12 @@
  */
 package erando.services.interfaces;
 
-import erando.models.Publication;
+import erando.models.PublicationGroup;
 
 /**
  *
  * @author cimope
  */
-public interface IPublicationService extends IService<Publication, Integer>{
- public Publication getPublicationById(Integer id);
+public interface IPublicationService extends IService<PublicationGroup, Integer>{
+ public PublicationGroup getPublicationById(Integer id);
 }
