@@ -13,7 +13,6 @@ import erando.services.impl.ImageService;
 import erando.services.impl.MembreService;
 import erando.services.impl.PublicationService;
 import erando.services.interfaces.IMembreService;
-import erando.services.interfaces.IPublicationService;
 import erando.techniques.Navigation;
 import java.io.File;
 import java.io.IOException;
@@ -47,6 +46,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import org.controlsfx.control.textfield.TextFields;
+import erando.services.interfaces.IPublicationGroupService;
 
 /**
  * FXML Controller class
@@ -84,7 +84,7 @@ public class Groupe_photosController implements Initializable {
 
     private ImageView selectedimg;
 
-    IPublicationService ps = new PublicationService();
+    IPublicationGroupService ps = new PublicationService();
     IMembreService ms = new MembreService();
     ImageService im = new ImageService();
 

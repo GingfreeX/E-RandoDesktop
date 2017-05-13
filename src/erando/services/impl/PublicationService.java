@@ -8,7 +8,6 @@ package erando.services.impl;
 import erando.models.Groupe;
 import erando.models.Membre;
 import erando.models.Publication;
-import erando.services.interfaces.IPublicationService;
 import erando.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.Date;
@@ -20,12 +19,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import erando.services.interfaces.IPublicationGroupService;
 
 /**
  *
  * @author wassim
  */
-public class PublicationService implements IPublicationService {
+public class PublicationService implements IPublicationGroupService {
 
     private Connection connection;
 

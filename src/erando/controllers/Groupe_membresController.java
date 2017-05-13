@@ -22,7 +22,6 @@ import erando.services.impl.GroupeService;
 import erando.services.impl.MembreService;
 import erando.services.impl.PublicationService;
 import erando.services.interfaces.IMembreService;
-import erando.services.interfaces.IPublicationService;
 import erando.techniques.Navigation;
 import java.io.File;
 import java.io.IOException;
@@ -60,6 +59,7 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import org.controlsfx.control.textfield.TextFields;
+import erando.services.interfaces.IPublicationGroupService;
 
 /**
  * FXML Controller class
@@ -127,7 +127,7 @@ public class Groupe_membresController implements Initializable, MapComponentInit
         @FXML
     private AnchorPane anchormain;
 
-    IPublicationService ps = new PublicationService();
+    IPublicationGroupService ps = new PublicationService();
     IMembreService ms = new MembreService();
     GroupeService gs = new GroupeService();
     Groupe g = gs.getGroupe(2);

@@ -17,7 +17,6 @@ import erando.services.impl.MembreService;
 import erando.services.impl.PublicationService;
 import erando.services.interfaces.ICommentaireService;
 import erando.services.interfaces.IMembreService;
-import erando.services.interfaces.IPublicationService;
 import erando.techniques.Navigation;
 import java.io.File;
 import java.io.IOException;
@@ -83,6 +82,7 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 import org.w3c.dom.ls.LSParser;
+import erando.services.interfaces.IPublicationGroupService;
 
 /**
  * FXML Controller class
@@ -133,7 +133,7 @@ public class Groupe_homeController implements Initializable {
     Button btndelete, btnupdate, btnjaime, btncomment, btnpostcomment;
     ListView<Commentaire> lscomment;
     Publication p;
-    IPublicationService ps = new PublicationService();
+    IPublicationGroupService ps = new PublicationService();
     IMembreService ms = new MembreService();
     GroupeService gs = new GroupeService();
     ImageService im = new ImageService();

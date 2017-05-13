@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author wassim
  */
-public interface IPublicationService extends IGroupService<Publication, Integer>{
+public interface IPublicationGroupService extends IGroupService<Publication, Integer>{
     
    Publication getPubById(int id);
    List<Publication> getPubOrderByDate(Groupe groupe);
