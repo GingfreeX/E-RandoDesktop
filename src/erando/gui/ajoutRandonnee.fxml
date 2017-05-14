@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="739.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.AjoutRandonneeController">
+   <children>
+      <GoogleMapView fx:id="mapView" disable="true" disableDoubleClick="true" layoutX="69.0" layoutY="41.0" visible="false" />
+      <JFXTextField fx:id="txdescription" labelFloat="true" layoutX="260.0" layoutY="255.0" promptText="description" />
+      <JFXTextField fx:id="txdestination" labelFloat="true" layoutX="260.0" layoutY="341.0" onKeyTyped="#destOnTyped" promptText="destination" />
+      <JFXTextField fx:id="txtitre" labelFloat="true" layoutX="260.0" layoutY="181.0" promptText="titre" />
+      <JFXTextField fx:id="txprix" labelFloat="true" layoutX="260.0" layoutY="526.0" promptText="prix" />
+      <JFXTextField fx:id="txnbrplaces" labelFloat="true" layoutX="662.0" layoutY="181.0" promptText="nombre de places" />
+      <JFXTextField fx:id="txdepart" labelFloat="true" layoutX="662.0" layoutY="255.0" onKeyTyped="#depOnTyped" promptText="point de depart" />
+      <JFXTextField fx:id="txageminim" labelFloat="true" layoutX="662.0" layoutY="526.0" promptText="age minimale" />
+      <JFXTextField fx:id="txmoyentransport" labelFloat="true" layoutX="662.0" layoutY="606.0" promptText="moyen transport" />
+      <JFXDatePicker fx:id="ddate" layoutX="260.0" layoutY="444.0" promptText="date" />
+      <JFXComboBox fx:id="cbtype" labelFloat="true" layoutX="662.0" layoutY="353.0" prefHeight="25.0" prefWidth="135.0" promptText="type" />
+      <JFXComboBox fx:id="cbniveau" labelFloat="true" layoutX="663.0" layoutY="446.0" prefHeight="25.0" prefWidth="135.0" promptText="niveau" />
+      <Label layoutX="168.0" layoutY="89.0" prefHeight="58.0" prefWidth="607.0" text="              AJOUTER UN EVENEMENT" textAlignment="CENTER" textFill="#ffa50b">
+         <font>
+            <Font name="Gabriola" size="48.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="pImage" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXHamburger fx:id="hamburger" layoutX="846.0" layoutY="22.0" />
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="508.0" layoutY="651.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/calendar.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnajouter" buttonType="RAISED" layoutX="506.0" layoutY="649.0" onAction="#ajouterRandonnee" opacity="0.0" prefHeight="78.0" prefWidth="77.0" style="-fx-background-color: #E57302;" text="ajouter ">
+         <font>
+            <Font name="Roboto" size="14.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="58.0" fitWidth="59.0" layoutX="319.0" layoutY="599.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/outbox.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="newPhotoButton" layoutX="319.0" layoutY="602.0" onAction="#addimage" opacity="0.0" prefHeight="58.0" prefWidth="58.0" text="Télécharger une image" />
+      <JFXDrawer fx:id="drawer" layoutX="-14.0" layoutY="7.0" prefHeight="787.0" prefWidth="153.0" />
+   </children>
+</AnchorPane>

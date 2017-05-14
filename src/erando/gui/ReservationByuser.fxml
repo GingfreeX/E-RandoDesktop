@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.ReservationByuserController">
+   <children>
+      <TableView fx:id="tbres" layoutX="102.0" layoutY="137.0" prefHeight="228.0" prefWidth="742.0">
+        <columns>
+          <TableColumn fx:id="cldepart" prefWidth="98.0" text="depart" />
+          <TableColumn fx:id="cldestination" prefWidth="168.0" text="destination" />
+            <TableColumn fx:id="cltitre" prefWidth="186.0" text="Randonne" />
+            <TableColumn prefWidth="289.0" text="montant a payer" fx:id="xlprix" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnconfirmer" buttonType="RAISED" layoutX="266.0" layoutY="397.0" onAction="#confirmerAction" prefHeight="35.0" prefWidth="110.0" text="Confirmer" />
+      <Label layoutX="232.0" layoutY="59.0" prefHeight="35.0" prefWidth="463.0" text="         liste des reservation " textAlignment="CENTER" textFill="#ffa50b">
+         <font>
+            <Font name="Gabriola" size="48.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="77.0" fitWidth="77.0" layoutX="412.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/delete.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnannuler" buttonType="RAISED" layoutX="418.0" layoutY="385.0" onAction="#annulerAction" opacity="0.0" prefHeight="77.0" prefWidth="66.0" text="Annuler" />
+      <JFXDrawer fx:id="drawer" prefHeight="600.0" prefWidth="77.0" />
+      <JFXHamburger fx:id="hamburger" layoutX="844.0" layoutY="28.0" />
+   </children>
+</AnchorPane>
