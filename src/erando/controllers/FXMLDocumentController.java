@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import erando.services.impl.ProductService;
+import erando.services.interfaces.IService;
 import java.io.IOException;
 import javafx.scene.control.Label;
 import java.net.URL;
@@ -25,8 +26,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javax.xml.bind.annotation.XmlElementDecl;
-import erando.services.interfaces.IShopService;
-import javafx.stage.Stage;
 /**
  *
  * @author F.Mouhamed
@@ -58,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
             HamburgerBasicCloseTransition transition = new HamburgerBasicCloseTransition(menu);
             transition.setRate(-1);
             window.getChildren().setAll(windoww);
-            IShopService productService = new ProductService();
+            IService productService = new ProductService();
             drawer.setSidePane(box);
             drawer.setOverLayVisible(false);
             for(Node node : box.getChildren()){
@@ -103,17 +102,8 @@ public class FXMLDocumentController implements Initializable {
                     }
                 }
                         break;
-                    case "Back":
-                {
-                    try {
-                        window.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("/erando/gui/FXMLProfile.fxml")));
-                    } catch (IOException ex) {
-                        Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                        drawer.close();
-                        transition.setRate(transition.getRate()*-1);
-                        transition.play();
-                }
+                    case "Exit":
+                        
                         break;
               
                 }

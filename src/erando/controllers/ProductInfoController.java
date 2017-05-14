@@ -14,10 +14,11 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
 import erando.models.Parameters;
-import erando.models.Product;
+import erando.Product;
 import erando.models.ProductComment;
 import erando.services.impl.ProductCommentService;
 import erando.services.impl.ProductService;
+import erando.services.interfaces.IService;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -56,7 +57,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.annotation.PostConstruct;
 import org.controlsfx.control.Notifications;
-import erando.services.interfaces.IShopService;
 
 /**
  * FXML Controller class
@@ -107,7 +107,7 @@ public class ProductInfoController implements Initializable {
 
         idProduit =Parameters.idP;
         pType = Parameters.typeP;
-         IShopService productService = new ProductService();
+         IService productService = new ProductService();
             if (productService.checkifLiked(idProduit, Parameters.user.getId())){ 
             Image image = new Image("file:///C:/Users/F.Mouhamed/Desktop/Esprit/ERandoPi/src/icons/iconLiked.png");
             likeImage.setImage(image);
@@ -125,7 +125,7 @@ public class ProductInfoController implements Initializable {
         idProduit=x;
         ArrayList<Node> children = new ArrayList<>();
         children.clear();
-        IShopService commentService = new ProductCommentService();
+        IService commentService = new ProductCommentService();
         List<ProductComment> cList = commentService.getOwn(idProduit);
 
         for (ProductComment p : cList) {
@@ -168,7 +168,7 @@ public class ProductInfoController implements Initializable {
     void refreshComments(){
         ArrayList<Node> children = new ArrayList<>();
         children.clear();
-        IShopService commentService = new ProductCommentService();
+        IService commentService = new ProductCommentService();
         List<ProductComment> cList = commentService.getOwn(idProduit);
 
         for (ProductComment p : cList) {
@@ -217,7 +217,7 @@ public class ProductInfoController implements Initializable {
     }
     @FXML
     void addComment(ActionEvent event) {
-        IShopService commentService = new ProductCommentService();
+        IService commentService = new ProductCommentService();
         ProductComment cmt = new ProductComment();
         cmt.setDescription(commentDescription.getText().toString());
         cmt.setIdProduct(idProduit);
@@ -239,7 +239,7 @@ public class ProductInfoController implements Initializable {
     }
      @FXML
     void likeProduct(ActionEvent event) {
-        IShopService productService = new ProductService();
+        IService productService = new ProductService();
        if (!productService.checkifLiked(idProduit, Parameters.user.getId())){
         productService.like(idProduit, Parameters.user.getId());
         Image image = new Image("file:///C:/Users/F.Mouhamed/Desktop/Esprit/ERandoPi/src/icons/iconLiked.png");
@@ -254,12 +254,12 @@ public class ProductInfoController implements Initializable {
        }
     }
     void checkLikes() {
-        IShopService productService = new ProductService();
+        IService productService = new ProductService();
         likesNumber.setText(""+productService.countLikes(idProduit));
     }
      @FXML
     void subscribe(ActionEvent event) {
-        IShopService productService = new ProductService();
+        IService productService = new ProductService();
         if (subscribed.isSelected()){
             productService.subscribe(Parameters.user.getId(),Parameters.user.getEmail(),pType);
         }
@@ -268,7 +268,7 @@ public class ProductInfoController implements Initializable {
         }
     }
     void deletecomment(int idComment){
-        IShopService commentService = new ProductCommentService();
+        IService commentService = new ProductCommentService();
         commentService.delete(idComment);
         comments.getChildren().clear();
         refreshComments();

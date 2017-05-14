@@ -5,9 +5,6 @@
  */
 package erando.models;
 
-
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -15,23 +12,22 @@ import java.util.logging.Logger;
  *
  * @author cimope
  */
-public class User implements Serializable{
+public class User {
     private int id ; 
     private String  nom ; 
     private String  prenom ;
     private int age;
     private String Descrption;
     private String password;
-    private int enabled;
+    private String enabled;
     private String Role ;
     private String ImagePath;
     private int numTel;
-    private String listinvitation;
-    private String listAmis;
+    private ArrayList<User> listinvitation;
+    private ArrayList<User> listAmis;
     private String email; 
     private static int idofuserAlreadyloggedin;
     private static String myemail;
-
 
     public User() {
     }
@@ -40,25 +36,13 @@ public class User implements Serializable{
         this.nom = name;
         this.email = email;
     }
-     public User(int x, String nom) {
-        this.id = x;
-        this.nom = nom;
-    }
-     public User(int x) {
-        this.id = x;
-        
-    }
+
+
     public User(String name, String password, String email,String Role) {
         this.nom = name;
         this.password = password;
         this.email = email;
         this.Role=Role;
-    }
-    public User(int x, String nom, String prenom,String email) {
-        this.id = x;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email=email;
     }
 
      public User(String name, String password, String email) {
@@ -88,19 +72,23 @@ public class User implements Serializable{
         this.Role=Role;
         this.numTel=numTel;
     }
-         public User(int id ,String nom, String prenom, int age, String Descrption,int enabled ,String password, String email,String Role,String listeamis,String imagePath) {
+    public User(int id ,String nom, String prenom, int age, String Descrption, String password, String email,String Role,String imagePath) {
         this.id=id;
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.Descrption = Descrption;
-        this.enabled=enabled;
         this.password = password;
         this.email = email;
         this.Role=Role;
-        this.listAmis=listeamis;
         this.ImagePath=imagePath;
        
+    }
+    public User(int id ,String nom, String prenom,String email) {
+        this.id=id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
     }
     
 
@@ -136,27 +124,27 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public int getEnabled() {
+    public String getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(int enabled) {
+    public void setEnabled(String enabled) {
         this.enabled = enabled;
     }
 
-    public String getListinvitation() {
+    public ArrayList<User> getListinvitation() {
         return listinvitation;
     }
 
-    public void setListinvitation(String listinvitation) {
+    public void setListinvitation(ArrayList<User> listinvitation) {
         this.listinvitation = listinvitation;
     }
 
-    public String getListAmis() {
+    public ArrayList<User> getListAmis() {
         return listAmis;
     }
 
-    public void setListAmis(String listAmis) {
+    public void setListAmis(ArrayList<User> listAmis) {
         this.listAmis = listAmis;
     }
 
@@ -224,16 +212,10 @@ public class User implements Serializable{
         this.numTel = numTel;
     }
 
-  
-
-
-
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", Descrption=" + Descrption + ", password=" + password + ", enabled=" + enabled + ", Role=" + Role + ", ImagePath=" + ImagePath + ", numTel=" + numTel + ", listinvitation=" + listinvitation + ", listAmis=" + listAmis + ", email=" + email + '}';
+        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", Descrption=" + Descrption + ", password=" + password + ", enabled=" + enabled + ", listinvitation=" + listinvitation + ", listAmis=" + listAmis + ", email=" + email + '}';
     }
-
-   
    
     
 }
