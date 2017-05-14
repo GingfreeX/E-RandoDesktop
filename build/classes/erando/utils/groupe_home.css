@@ -1,42 +1,42 @@
 
 
-#pub{
-    -fx-graphic: url('../images/pub.png');
+ #pub{
+  -fx-graphic: url('../images/pub.png');
 }
 
 
 
 
 #membres{
-    -fx-graphic: url('../images/mem.png');
-
+      -fx-graphic: url('../images/mem.png');
+    
 }
 
 #photos{
-    -fx-graphic: url('../images/photos.png');
-
+      -fx-graphic: url('../images/photos.png');
+    
 }
 
 #chat{
-    -fx-graphic: url('../images/chat.png');
-
+      -fx-graphic: url('../images/chat.png');
+    
 }
 
 #option{
-    -fx-graphic: url('../images/option.png');
-
+      -fx-graphic: url('../images/option.png');
+    
 }
 
 
 #addmember{
-    -fx-graphic: url('../images/addmember.png');
-    -fx-background-color: transparent;
+          -fx-graphic: url('../images/addmember.png');
+          -fx-background-color: transparent;
 
 }
 
 #creategroupe{
-    -fx-graphic: url('../images/logo.png');
-
+          -fx-graphic: url('../images/logo.png');
+ 
 }
 
 .btnsup{
@@ -47,219 +47,114 @@
 }
 
 .btnupload{
-    -fx-graphic: url('../images/uploadimg.png');
+              -fx-graphic: url('../images/uploadimg.png');
 
-
-}
-
-#btnuploadimg{
-    -fx-graphic: url('../images/uploadimg.png');
-    -fx-background-color: transparent;
-
+    
 }
 
 .btndownload{
-
-    -fx-graphic: url('../images/downlod.png');
-    -fx-background-color:moccasin;
-    -fx-text-fill: black;
+    
+                  -fx-graphic: url('../images/downlod.png');
+                  -fx-background-color:moccasin;
+                  -fx-text-fill: black;
 
 }
 
 
 #ico1{
-    -fx-graphic: url('../images/Smiling_Face_Emoji.png');
-
-
-
+   -fx-graphic: url('../images/Smiling_Face_Emoji.png');
+    
+    
+    
 }
 
 #ico2{
-    -fx-graphic: url('../images/Blow_Kiss_Emoji.png');
-
+   -fx-graphic: url('../images/Blow_Kiss_Emoji.png');
+    
 }
 
 #ico3{
-    -fx-graphic: url('../images/Cold_Sweat_Emoji.png');
-
+   -fx-graphic: url('../images/Cold_Sweat_Emoji.png');
+    
 }
 
 #ico4{
-    -fx-graphic: url('../images/Crying_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Crying_Face_Emoji.png');
+    
 }
 
 #ico5{
-    -fx-graphic: url('../images/Face_with_Cold_Sweat_Emoji.png');
-
+   -fx-graphic: url('../images/Face_with_Cold_Sweat_Emoji.png');
+    
 }
 #ico6{
-    -fx-graphic: url('../images/Grinning_Emoji_with_Smiling_Eyes.png');
-
+   -fx-graphic: url('../images/Grinning_Emoji_with_Smiling_Eyes.png');
+    
 }
 #ico7{
-    -fx-graphic: url('../images/Kiss_Emoji_with_Closed_Eyes.png');
-
+   -fx-graphic: url('../images/Kiss_Emoji_with_Closed_Eyes.png');
+    
 }
 #ico8{
-    -fx-graphic: url('../images/Loudly_Crying_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Loudly_Crying_Face_Emoji.png');
+    
 }
 
 #ico9{
-    -fx-graphic: url('../images/Sad_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Sad_Face_Emoji.png');
+    
 }
 #ico10{
-    -fx-graphic: url('../images/Shyly_Smiling_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Shyly_Smiling_Face_Emoji.png');
+    
 }
 #ico11{
-    -fx-graphic: url('../images/Sleeping_with_Snoring_Emoji.png');
-
+   -fx-graphic: url('../images/Sleeping_with_Snoring_Emoji.png');
+    
 }
 #ico12{
-    -fx-graphic: url('../images/Slightly_Smiling_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Slightly_Smiling_Face_Emoji.png');
+    
 }
 #ico13{
-    -fx-graphic: url('../images/Smiling_with_Sweat_Emoji.png');
-
+   -fx-graphic: url('../images/Smiling_with_Sweat_Emoji.png');
+    
 }
 #ico14{
-    -fx-graphic: url('../images/Smirk_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Smirk_Face_Emoji.png');
+    
 }
 
 #ico15{
-    -fx-graphic: url('../images/Sunglasses_Emoji.png');
-
+   -fx-graphic: url('../images/Sunglasses_Emoji.png');
+    
 }
 
 #ico16{
-    -fx-graphic: url('../images/Tears_of_Joy_Emoji.png');
-
+   -fx-graphic: url('../images/Tears_of_Joy_Emoji.png');
+    
 }
 #ico17{
-    -fx-graphic: url('../images/Thinking_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Thinking_Face_Emoji.png');
+    
 }
 #ico18{
-    -fx-graphic: url('../images/Tongue_Out_Emoji.png');
-
+   -fx-graphic: url('../images/Tongue_Out_Emoji.png');
+    
 }
 #ico19{
-    -fx-graphic: url('../images/Unamused_Face_Emoji.png');
-
+   -fx-graphic: url('../images/Unamused_Face_Emoji.png');
+    
 }
 
 #ico20{
-    -fx-graphic: url('../images/Very_Angry_Emoji.png');
-
+   -fx-graphic: url('../images/Very_Angry_Emoji.png');
+    
 }
 
 #btnsmile{
-    -fx-graphic: url('../images/face-smile.png');
-    -fx-background-color: transparent;
+       -fx-graphic: url('../images/face-smile.png');
+       -fx-background-color: transparent;
 
 }
 
-.notification-bar>.pane {
-    -fx-background-color: #E68364;
-    -fx-padding: 5 5 5 5;
-}
-
-.likebtn{
-    -fx-graphic: url('../images/like.png');
-    -fx-background-color: transparent;
-    -fx-translate-y: 13;
-    -fx-font-weight: bold;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-size: 14px;
-
-
-
-
-
-}
-
-.commentbtn{
-    -fx-graphic: url('../images/comment.png');
-    -fx-translate-x: 80;
-    -fx-translate-y: -21;
-    -fx-background-color: transparent;
-    -fx-font-weight: bold;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-size: 13px;
-
-
-}
-
-.txtdes{
-    -fx-font-size:16px;
-    -fx-wrap-text:true;
-    -fx-padding: 5 5 5 5;
-
-}
-
-.txtcomment{
-    -fx-max-width:350;
-    -fx-min-height: 35;
-    -fx-translate-x:42;
-}
-
-.imgUserlogged{
-    -fx-translate-y:-62;
-}
-
-.lblnblike{
-    -fx-translate-y: -15
-}
-
-.btnpostcomment{
-    -fx-translate-x:335;
-    -fx-translate-y:-30;
-    -fx-font-size:13px;
-    -fx-font-weight: bold;
-    -fx-font-family: "Arial Narrow";
-
-}
-
-.deletecomment{
-
-    -fx-graphic:url('../images/deletecom.png');
-    -fx-background-color:transparent;
-    -fx-translate-y:0;
-    -fx-padding: 0 0 0 30;
-
-
-
-}
-
-.commenttext{
-    -fx-translate-y:0;
-    -fx-padding: 0 5 0 5;
-
-}
-
-.usernamestyle{
-    -fx-font-weight:bold;
-}
-label {
-    -fx-text-fill: #e67e22;
-    
-}
-AnchorPane {
-    -fx-background-color: #FCFCFC;
-    width: 900;
-    height: 700;
-}
-Pane {
-    -fx-background-color: #FCFCFC;
-}
-ScrollPane,VBox {
-    -fx-background-color: #FCFCFC;
-}
-JFXButton {
-    -fx-background-color: #e67e22;
-}

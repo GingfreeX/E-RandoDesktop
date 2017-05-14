@@ -9,16 +9,15 @@ import java.util.List;
 
 /**
  *
- * @author cimope
+ * @author wassim
  */
-public interface IService<T,R> {
+public interface IService <T,R> {
+    
     void add(T t);
-
     void update(T t);
-
     void delete(R id);
-
     List<T> getAll();
-
-  
+    
+    
+    
 }

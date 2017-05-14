@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author wassim
  */
-public interface IGroupeService extends IGroupService<Groupe, Integer>{
+public interface IGroupeService extends IService<Groupe, Integer>{
     Groupe getGroupe(int id); 
     void addmembre(Groupe groupe,int idmembre);
     void deletemembre(Groupe groupe,int idmembre);
@@ -21,7 +21,6 @@ public interface IGroupeService extends IGroupService<Groupe, Integer>{
     int getGroupeMemberNumber(Groupe groupe);
     List<String> getGroupeMemberPhoto(Groupe groupe);
     List<Membre> getGroupMembers(Groupe groupe);
-    int getIdCreateur(Groupe groupe);
 
     
 }

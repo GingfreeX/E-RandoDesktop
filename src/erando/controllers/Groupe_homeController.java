@@ -5,42 +5,35 @@
  */
 package erando.controllers;
 
-import erando.models.Commentaire;
 import erando.models.Groupe;
 import erando.models.ImageG;
 import erando.models.Membre;
-import erando.models.PublicationGroup;
-import erando.services.impl.CommentaireService;
+import erando.models.Publication;
 import erando.services.impl.GroupeService;
 import erando.services.impl.ImageService;
 import erando.services.impl.MembreService;
 import erando.services.impl.PublicationService;
-import erando.services.interfaces.ICommentaireService;
 import erando.services.interfaces.IMembreService;
+import erando.services.interfaces.IPublicationService;
 import erando.techniques.Navigation;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -52,37 +45,19 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Control;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-
 import javafx.stage.FileChooser;
-import javafx.util.Callback;
-
-import javafx.util.Duration;
-
-import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
-import org.w3c.dom.ls.LSParser;
-import erando.services.interfaces.IPublicationGroupService;
 
 /**
  * FXML Controller class
@@ -94,10 +69,8 @@ public class Groupe_homeController implements Initializable {
     @FXML
     private VBox vbox;
     @FXML
-    private TextArea txtpublication;
 
-    @FXML
-    private TextField txtsearch;
+    private TextField txtpublication, txtsearch;
     @FXML
 
     private Label lblerreur, lblmsgmember, membresnbr, groupedesc;
@@ -108,10 +81,11 @@ public class Groupe_homeController implements Initializable {
     @FXML
 
     private Button addmember, changecover, btnsmile, btn1smile, btn2kissheadrt, btn3horror, btn4cry, btn5disappoint, btn6laugh;
-
+    
     @FXML
     private Button btn7kiss, btn8tears, btn9sad, btn10shy, btn11crytears, btn12smilesimple, btn13astonlaugh, btn14surprise, btn15calme, btn16laughtears, btn17think, btn18tongue, btn19confused, btn20angry;
 
+    
     @FXML
     private ImageView coverpic;
 
@@ -122,29 +96,22 @@ public class Groupe_homeController implements Initializable {
     @FXML
     private AnchorPane listsmiley;
 
-    @FXML
-    private Button btnupload;
-    @FXML
-    private AnchorPane anchormain;
-    TextField txtcomment;
-    Label lblusername, lbldescription, lbldatepub, lblnbLike;
+
+    Label lblusername, lbldescription, lbldatepub;
     Image image_user, im_delete, im_edit, im_upload;
-    ImageView imagev, deleteicon, updateicon, uploadicon, postimg, imgUserlogged;
-    Button btndelete, btnupdate, btnjaime, btncomment, btnpostcomment;
-    ListView<Commentaire> lscomment;
-    PublicationGroup p;
-    IPublicationGroupService ps = new PublicationService();
+    ImageView imagev, deleteicon, updateicon, uploadicon, postimg;
+    Button btndelete, btnupdate, btnupload;
+
+    Publication p;
+    ImageG i;
+    IPublicationService ps = new PublicationService();
     IMembreService ms = new MembreService();
     GroupeService gs = new GroupeService();
     ImageService im = new ImageService();
-    ICommentaireService cs = new CommentaireService();
-    Commentaire comment;
-    Groupe g = gs.getGroupe(2);
-    Membre m = ms.getUser(2);
-    int nbclick = 0;
-    int idcreateur = gs.getIdCreateur(g);
 
-    List<Commentaire> lscmt = new ArrayList<>();
+    Groupe g = gs.getGroupe(2);
+    Membre m = ms.getUser(7);
+    int nbclick = 0;
 
     /**
      * Initializes the controller class.
@@ -163,32 +130,23 @@ public class Groupe_homeController implements Initializable {
 
     @FXML
     void addpublication(ActionEvent event) {
-        if (txtpublication.getText().equals("")) {
-            Image i = new Image("/erando/images/rror.png");
-            Notifications notif = Notifications.create()
-                    .title("Publication vide")
-                    .graphic(new ImageView(i))
-                    .text("Ecrivez quelque chose svp")
-                    .hideAfter(Duration.seconds(5))
-                    .position(Pos.TOP_CENTER);
 
-            notif.show();
+        if (txtpublication.getText().equals("")) {
+
+            lblerreur.setText("Votre publication est vide. Ecrivez quelque chose ");
+
         } else {
             lblerreur.setText("");
-            p = new PublicationGroup(txtpublication.getText(), m, g, "");
+            p = new Publication(txtpublication.getText(), m, g);
             ps.add(p);
 
-            Image i = new Image("/erando/images/tick.png");
-            Notifications notif = Notifications.create()
-                    .title("Succées")
-                    .graphic(new ImageView(i))
-                    .text("Publication publiée avec succées")
-                    .hideAfter(Duration.seconds(5))
-                    .darkStyle()
-                    .position(Pos.TOP_CENTER);
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Votre publication est publiée avec success");
 
+            alert.showAndWait();
             new Navigation().switchScene("groupe_home.fxml", event);
-            notif.show();
 
             txtpublication.setText("");
 
@@ -197,10 +155,9 @@ public class Groupe_homeController implements Initializable {
     }
 
     @FXML
-    public void gotoMembres(ActionEvent e) {
+    public void gotoMembres(ActionEvent e) throws IOException {
 
         new Navigation().switchScene("groupe_membres.fxml", e);
-
     }
 
     @FXML
@@ -214,16 +171,13 @@ public class Groupe_homeController implements Initializable {
         dialog.setTitle("CREER UN GROUPE");
         dialog.setHeaderText("CREEZ VOTRE GROUPE ET PARTAGEZ VOS PASSIONS");
         ButtonType btncreer = new ButtonType("CREER", ButtonData.OK_DONE);
-        Label err = new Label("Champ requis");
-
-        dialog.getDialogPane().getButtonTypes().addAll(btncreer);
+        dialog.getDialogPane().getButtonTypes().addAll(btncreer, ButtonType.CLOSE);
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
-        grid.setPadding(new Insets(20, 20, 10, 10));
+        grid.setPadding(new Insets(20, 150, 10, 10));
 
         TextField groupenom = new TextField();
-        groupenom.setPrefWidth(180);
         groupenom.setPromptText("Nom du groupe");
         TextField groupedes = new TextField();
         groupedes.setPromptText("Description du groupe");
@@ -234,62 +188,75 @@ public class Groupe_homeController implements Initializable {
         grid.add(groupedes, 1, 1);
 
         // Enable/Disable login button depending on whether a username was entered.
+        Node createButton = dialog.getDialogPane().lookupButton(btncreer);
+        createButton.setDisable(true);
+
+        // Do some validation (using the Java 8 lambda syntax).
+        groupenom.textProperty().addListener((observable, oldValue, newValue) -> {
+            createButton.setDisable(newValue.trim().isEmpty());
+        });
+
         dialog.getDialogPane().setContent(grid);
+
+        // Request focus on the username field by default.
+        Platform.runLater(() -> groupenom.requestFocus());
 
         Optional<Groupe> result = dialog.showAndWait();
 
         if (result.isPresent()) {
 
-            if ("".equals(groupenom.getText()) || "".equals(groupedes.getText())) {
-                Alert alert1 = new Alert(AlertType.ERROR);
-                alert1.setTitle("Erreur");
-                alert1.setHeaderText(null);
-                alert1.setContentText("Vous devez remplir tous les champs svp");
-
-                alert1.showAndWait();
-            } else {
+            if (!"".equals(groupenom.getText()) && !"".equals(groupedes.getText())) {
                 Groupe grp = new Groupe(groupenom.getText(), groupedes.getText(), new Membre(7));
                 gs.add(grp);
-                Alert alert1 = new Alert(AlertType.INFORMATION);
-                alert1.setTitle("Information");
-                alert1.setHeaderText(null);
-                alert1.setContentText("Votre Groupe est crée avec success");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("Votre Groupe est crée avec success");
 
-                alert1.showAndWait();
+                alert.showAndWait();
+
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("CREATION ECHOUE");
+                alert.setHeaderText(null);
+                alert.setContentText("Vous devez remplir tous les champs");
+
+                alert.showAndWait();
             }
+
         }
 
     }
 
-    @FXML
+   /* @FXML
     void uploadimg(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
         fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
-        Image i = new Image("/erando/images/tick.png");
-
         File file = fileChooser.showOpenDialog(null);
+        Image image = new Image(file.toURI().toString());
+        postimg.setImage(image);
 
-        p = new PublicationGroup(txtpublication.getText(), m, g, file.getName());
-        ps.add(p);
-        Notifications notif = Notifications.create()
-                .title("Succées")
-                .graphic(new ImageView(i))
-                .text("Publication publiée avec succées")
-                .hideAfter(Duration.seconds(5))
-                .darkStyle()
-                .position(Pos.TOP_CENTER);
-        new Navigation().switchScene("groupe_home.fxml", event);
+        // i = new ImageG(file.getName(),g,m);
+        //im.add(i);
 
-        notif.show();
+        /* Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Votre publication est publiée avec success");
 
-    }
+            alert.showAndWait();
+            new Navigation().switchScene("groupe_home.fxml", event);
+         */
+        //g.setPhoto_couverture(file.getName());
+        //gs.update(g);
+   // }
 
-    @FXML
+        @FXML
     void showsmiley(MouseEvent event) {
-        nbclick++;
+     nbclick++;
         if (nbclick == 1) {
             listsmiley.setVisible(true);
 
@@ -304,13 +271,16 @@ public class Groupe_homeController implements Initializable {
     }
 
     public void loadpublication() {
-        List<PublicationGroup> lp = ps.getPubOrderByDate(g);
+
+        List<Publication> lp = ps.getPubOrderByDate(g);
         for (int i = 0; i < lp.size(); i++) {
             // lp.get(i).getCreateur().getId() retourne id dde user
             // getuser retroune un objet user
             lblusername = new Label(ms.getUser(lp.get(i).getCreateur().getId()).getUsername());
-            Text txtdes = new Text(lp.get(i).getDescription());
-            txtdes.getStyleClass().add("txtdes");
+            lbldescription = new Label(lp.get(i).getDescription());
+
+            lbldescription.translateYProperty().setValue(-10);
+            lbldescription.setStyle("-fx-font-size:18px;");
 
             lbldatepub = new Label((String.valueOf(lp.get(i).getDate_publication())));
 
@@ -319,59 +289,6 @@ public class Groupe_homeController implements Initializable {
 
             lbldatepub.translateXProperty().set(60);
             lbldatepub.translateYProperty().setValue(-40);
-            btnjaime = new Button("J'aime");
-            btnjaime.getStyleClass().add("likebtn");
-            btnjaime.setId(String.valueOf(lp.get(i).getId()));
-            PublicationGroup pub = lp.get(i);
-
-            btnjaime.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    ps.updateNbrLike(pub);
-                }
-            });
-
-            btncomment = new Button("Commenter");
-            btncomment.getStyleClass().add("commentbtn");
-
-            lblnbLike = new Label(String.valueOf(pub.getNbrjaime()) + " J'aime");
-            lblnbLike.getStyleClass().add("lblnblike");
-            txtcomment = new TextField();
-            txtcomment.setPromptText("Votre commentaire ...");
-            txtcomment.getStyleClass().add("txtcomment");
-            txtcomment.setId(String.valueOf(pub.getId()));
-
-            btnpostcomment = new Button("Publier");
-            btnpostcomment.getStyleClass().add("btnpostcomment");
-            btnpostcomment.setId(String.valueOf(pub.getId()));
-
-            btnpostcomment.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    for (Node node : vbox.getChildren()) {
-                        if (node instanceof TextField) {
-                            if (node.getId().equals(((Control) event.getSource()).getId())) {
-                                comment = new Commentaire(((TextField) node).getText(), m, pub);
-                                cs.add(comment);
-                                ((TextField) node).setText("");
-                                new Navigation().switchScene("groupe_home.fxml", event);
-
-                            }
-                        }
-                    }
-                }
-            });
-
-            lscmt = cs.getAllCommentByPub(lp.get(i).getId());
-            ObservableList<Commentaire> ob = FXCollections.observableArrayList(lscmt);
-            lscomment = new ListView<>();
-            Pane pane = new Pane();
-            pane.getChildren().add(lscomment);
-            lscomment.setPrefHeight(90);
-            lscomment.setPrefWidth(450);
-
-            imgUserlogged = imageUserlogged();
-            imgUserlogged.getStyleClass().add("imgUserlogged");
 
             File f = new File("C:\\Users\\wassim\\Documents\\NetBeansProjects\\ERandoPi\\src\\erando\\images\\" + ms.getUser(lp.get(i).getCreateur().getId()).getProfil_pic());
             Image image_user = new Image(f.toURI().toString());
@@ -394,11 +311,8 @@ public class Groupe_homeController implements Initializable {
             btndelete.setCursor(Cursor.HAND);
 
             btndelete.translateXProperty().setValue(640);
+            btndelete.translateYProperty().setValue(-95);
             btndelete.setPrefSize(20, 20);
-            // si id de createur est = id de user connecte 
-            if (lp.get(i).getCreateur().getId() != m.getId()) {
-                btndelete.setVisible(false);
-            }
             btndelete.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -437,11 +351,8 @@ public class Groupe_homeController implements Initializable {
             btnupdate.setCursor(Cursor.HAND);
 
             btnupdate.translateXProperty().setValue(640);
+            btnupdate.translateYProperty().setValue(-10);
             btnupdate.setPrefSize(20, 20);
-
-            if (lp.get(i).getCreateur().getId() != m.getId()) {
-                btnupdate.setVisible(false);
-            }
             btnupdate.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -450,17 +361,18 @@ public class Groupe_homeController implements Initializable {
                     dialog.setTitle("Modifier publication");
                     dialog.setHeaderText(null);
                     dialog.setContentText(null);
-                    dialog.getDialogPane().setMinWidth(500);
+
+                    // Traditional way to get the response value.
                     Optional<String> result = dialog.showAndWait();
                     if (result.isPresent()) {
-                        PublicationGroup p = ps.getPubById(Integer.parseInt(((Control) event.getSource()).getId()));
+                        Publication p = ps.getPubById(Integer.parseInt(((Control) event.getSource()).getId()));
                         p.setDescription(result.get());
                         ps.update(p);
                         Alert info = new Alert(AlertType.INFORMATION);
+                        info.setWidth(200.5);
                         info.setTitle("Information");
                         info.setHeaderText(null);
                         info.setContentText("Votre publication est modifiée avec success");
-
                         info.showAndWait();
                         new Navigation().switchScene("groupe_home.fxml", event);
 
@@ -468,110 +380,11 @@ public class Groupe_homeController implements Initializable {
 
                 }
             });
-
-            if ("".equals(txtdes.getText()) && !"".equals(lp.get(i).getPhoto())) {
-                File fimgpost = new File("C:\\Users\\wassim\\Documents\\NetBeansProjects\\ERandoPi\\src\\erando\\images\\" + lp.get(i).getPhoto());
-                Image imgpost = new Image(fimgpost.toURI().toString());
-                postimg = new ImageView();
-                postimg.setImage(imgpost);
-                postimg.setFitWidth(650);
-                postimg.setFitHeight(450);
-                postimg.translateYProperty().setValue(-10);
-                lscomment.setCellFactory(new Callback<ListView<Commentaire>, ListCell<Commentaire>>() {
-                    @Override
-                    public ListCell<Commentaire> call(ListView<Commentaire> param) {
-                        ListCell<Commentaire> cell = new ListCell<Commentaire>() {
-
-                            @Override
-                            protected void updateItem(Commentaire cm, boolean bool) {
-                                super.updateItem(cm, bool);
-                                HBox hb = customlistComment(cm);
-                                setGraphic(hb);
-
-                            }
-                        };
-                        return cell;
-                    }
-                });
-
-                lscomment.setItems(ob);
-
-                if (lscomment.getItems().isEmpty()) {
-                    lscomment.setPlaceholder(new Label("Aucun commentaires"));
-
-                }
-
-                vbox.getChildren().addAll(imagev, lblusername, lbldatepub, postimg, btnjaime, btncomment, lblnbLike, txtcomment, btnpostcomment, pane, imgUserlogged, btndelete, btnupdate, new Separator(Orientation.HORIZONTAL));
-
-            } else if (!"".equals(txtdes.getText()) && "".equals(lp.get(i).getPhoto())) {
-               
-                lscomment.setCellFactory(new Callback<ListView<Commentaire>, ListCell<Commentaire>>() {
-                    @Override
-                    public ListCell<Commentaire> call(ListView<Commentaire> param) {
-                        ListCell<Commentaire> cell = new ListCell<Commentaire>() {
-
-                            @Override
-                            protected void updateItem(Commentaire cm, boolean bool) {
-                                super.updateItem(cm, bool);
-                                HBox hb = customlistComment(cm);
-                                setGraphic(hb);
-
-                            }
-                        };
-                        return cell;
-                    }
-                });
-
-                lscomment.setItems(ob);
-
-                if (lscomment.getItems().isEmpty()) {
-                    lscomment.setPlaceholder(new Label("Aucun commentaires"));
-
-                }
-
-                vbox.getChildren().addAll(imagev, lblusername, lbldatepub, txtdes, btnjaime, btncomment, lblnbLike, txtcomment, btnpostcomment, pane, imgUserlogged, btndelete, btnupdate, new Separator(Orientation.HORIZONTAL));
-
-            } else {
-                File fimgpost = new File("C:\\Users\\wassim\\Documents\\NetBeansProjects\\ERandoPi\\src\\erando\\images\\" + lp.get(i).getPhoto());
-                Image imgpost = new Image(fimgpost.toURI().toString());
-                postimg = new ImageView();
-                postimg.setImage(imgpost);
-                postimg.setFitWidth(650);
-                postimg.setFitHeight(450);
-
-                postimg.translateYProperty().setValue(0);
-                lscomment.setCellFactory(new Callback<ListView<Commentaire>, ListCell<Commentaire>>() {
-                    @Override
-                    public ListCell<Commentaire> call(ListView<Commentaire> param) {
-                        ListCell<Commentaire> cell = new ListCell<Commentaire>() {
-
-                            @Override
-                            protected void updateItem(Commentaire cm, boolean bool) {
-                                super.updateItem(cm, bool);
-                                HBox hb = customlistComment(cm);
-                                setGraphic(hb);
-
-                            }
-                        };
-                        return cell;
-                    }
-                });
-
-                lscomment.setItems(ob);
-
-                if (lscomment.getItems().isEmpty()) {
-                    lscomment.setPlaceholder(new Label("Aucun commentaires"));
-
-                }
-
-                vbox.getChildren().addAll(imagev, lblusername, lbldatepub, txtdes, postimg, btnjaime, btncomment, lblnbLike, txtcomment, btnpostcomment, pane, imgUserlogged, btndelete, btnupdate, new Separator(Orientation.HORIZONTAL));
-
-            }
+            vbox.getChildren().addAll(imagev, lblusername, lbldatepub, lbldescription, btndelete, btnupdate, new Separator(Orientation.HORIZONTAL));
             scrollpane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
             scrollpane.setContent(vbox);
 
         }
-
     }
 
     public void loadMemberNumber() {
@@ -606,7 +419,7 @@ public class Groupe_homeController implements Initializable {
     }
 
     public void loadCoverPhoto() {
-        File file = new File("C:\\Users\\wassim\\Documents\\NetBeansProjects\\ERandoPi\\src\\erando\\images\\" + g.getPhoto_couverture());
+        File file = new File("C:\\Users\\wassim\\Desktop\\" + g.getPhoto_couverture());
         Image image = new Image(file.toURI().toString());
         coverpic.setImage(image);
 
@@ -792,58 +605,6 @@ public class Groupe_homeController implements Initializable {
     void btntongueaction(ActionEvent event) {
         txtpublication.setText(txtpublication.getText() + " :p");
 
-    }
-
-    public ImageView imageUserlogged() {
-
-        File f = new File("C:\\Users\\wassim\\Documents\\NetBeansProjects\\ERandoPi\\src\\erando\\images\\" + m.getProfil_pic());
-        Image image_user = new Image(f.toURI().toString());
-        imagev = new ImageView();
-        imagev.setImage(image_user);
-        imagev.setFitHeight(35);
-        imagev.setFitWidth(35);
-        return imagev;
-    }
-
-    public HBox customlistComment(Commentaire cm) {
-        HBox hbox = new HBox();
-
-        if (cm != null) {
-            Image im = new Image("erando/images/" + cm.getUser().getProfil_pic());
-            ImageView imv = new ImageView(im);
-            imv.setFitHeight(30.0);
-            imv.setFitWidth(30.0);
-
-            Button btnsup = new Button();
-            btnsup.getStyleClass().add("deletecomment");
-            btnsup.setVisible(false);
-            btnsup.setId((String.valueOf(cm.getId())));
-
-            if (m.getId() == cm.getUser().getId()) {
-                btnsup.setVisible(true);
-
-            }
-            btnsup.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    cs.delete(Integer.parseInt(((Control) event.getSource()).getId()));
-                }
-            });
-            Label username = new Label();
-            username.setText(cm.getUser().getUsername());
-            username.getStyleClass().add("usernamestyle");
-            Label text = new Label();
-            text.getStyleClass().add("commenttext");
-            text.setText(cm.getCommenttxt());
-
-            hbox.getChildren().addAll(imv);
-            hbox.getChildren().addAll(username);
-            hbox.getChildren().addAll(text);
-            hbox.getChildren().addAll(btnsup);
-            // hbox.setMargin(imv, new Insets(0, 5, 0, 0));
-
-        }
-        return hbox;
     }
 
 }

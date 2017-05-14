@@ -5,12 +5,19 @@
  */
 package erando.services.interfaces;
 
+import erando.models.Groupe;
 import erando.models.Publication;
+import java.util.List;
 
 /**
  *
- * @author cimope
+ * @author wassim
  */
 public interface IPublicationService extends IService<Publication, Integer>{
- public Publication getPublicationById(Integer id);
+    
+   Publication getPubById(int id);
+   List<Publication> getPubById_Createur(int id_createur);
+   List<Publication> getPubOrderByDate(Groupe groupe);
+
+    
 }

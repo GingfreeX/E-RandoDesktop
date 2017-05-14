@@ -6,48 +6,77 @@
 package erando.models;
 
 import java.sql.Date;
-
-
-
 import java.util.Calendar;
+
 
 /**
  *
- * @author cimope
+ * @author wassim
  */
 public class Publication {
-    private int id ; 
+    private int id ;
     private String description;
-    private  String section;
-    private  Date datepub ;
-    private User user;
-    private String imagepath;
+    private int nb_jaime;
+    private Date date_publication;
+    private Membre createur;
+    private Groupe groupe;
+    
+     public Publication() {
 
-    public Publication(int id, String description, String section,Date datepu, User user) {
+    }
+
+    public Publication(int id, String description, Date date_publication, Membre createur) {
         this.id = id;
         this.description = description;
-        this.section = section;
-         this.datepub =datepu;
-        this.user = user;
+        this.date_publication = date_publication;
+        this.createur = createur;
     }
 
-    public Publication() {
+   
+
+   
+    public Publication( String description, Date date_publication, Membre createur, Groupe groupe) {
+        
+        this.description = description;
+        this.date_publication = date_publication;
+        this.createur = createur;
+        this.groupe = groupe;
     }
 
-   public Publication(String description, String section, Date datepub, User user) {
+    public Publication(String description, Membre createur, Groupe groupe) {
         this.description = description;
-        this.section = section;
-        this.datepub = datepub;
-        this.user = user;
+        this.createur = createur;
+        this.groupe = groupe;
+        this.date_publication =  new Date(Calendar.getInstance().getTime().getTime());
+
     }
-    public Publication(int id,String description, String section, Date datepub, User user,String imagePath) {
-         this.id = id;
+
+    
+    
+
+   
+    public Publication(String description, Date date_publication) {
         this.description = description;
-        this.section = section;
-        this.datepub = datepub;
-        this.user = user;
-        this.imagepath=imagePath;
+        this.date_publication = date_publication;
     }
+
+    public Publication(String description, Date date_publication, Membre createur) {
+        this.description = description;
+        this.date_publication = date_publication;
+        this.createur = createur;
+    }
+
+    
+
+    public Publication(String description, Membre createur) {
+        this.description = description;
+        this.createur = createur;
+        this.date_publication =  new Date(Calendar.getInstance().getTime().getTime());
+
+    }
+
+  
+  
 
     public int getId() {
         return id;
@@ -65,44 +94,75 @@ public class Publication {
         this.description = description;
     }
 
-    public String getSection() {
-        return section;
+    public int getNb_jaime() {
+        return nb_jaime;
     }
 
-    public void setSection(String section) {
-        this.section = section;
+    public void setNb_jaime(int nb_jaime) {
+        this.nb_jaime = nb_jaime;
     }
 
-    public Date getDatepub() {
-        return datepub;
+    public Date getDate_publication() {
+        return date_publication;
     }
 
-    public void setDatepub(Date datepub) {
-        this.datepub = datepub;
+    public void setDate_publication(Date date_publication) {
+        this.date_publication = date_publication;
     }
 
-    public User getUser() {
-        return user;
+    public Membre getCreateur() {
+        return createur;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCreateur(Membre createur) {
+        this.createur = createur;
     }
 
-    public String getImagepath() {
-        return imagepath;
+    public Groupe getGroupe() {
+        return groupe;
     }
 
-    public void setImagepath(String imagepath) {
-        if(imagepath==null){
-            this.imagepath=null;
+    public void setGroupe(Groupe groupe) {
+        this.groupe = groupe;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
         }
-        this.imagepath = imagepath;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Publication other = (Publication) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Publication{" + "id=" + id + ", description=" + description + ", section=" + section + ", datepub=" + datepub + ", user=" + user.toString() + '}';
+        return "Publication{" + "id=" + id + ", description=" + description + ", nb_jaime=" + nb_jaime + ", date_publication=" + date_publication + ", createur=" + createur + ", groupe=" + groupe + '}';
     }
+
+    
+  
+    
+    
+    
+    
+    
+    
     
 }

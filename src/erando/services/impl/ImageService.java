@@ -8,7 +8,7 @@ package erando.services.impl;
 import erando.models.Groupe;
 import erando.models.ImageG;
 import erando.models.Membre;
-import erando.models.PublicationGroup;
+import erando.models.Publication;
 import erando.services.interfaces.IImageService;
 import erando.techniques.DataSource;
 import java.sql.Connection;

@@ -13,7 +13,10 @@ import erando.services.impl.ImageService;
 import erando.services.impl.MembreService;
 import erando.services.impl.PublicationService;
 import erando.services.interfaces.IMembreService;
+import erando.services.interfaces.IPublicationService;
 import erando.techniques.Navigation;
+import java.awt.Desktop;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -46,7 +49,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import org.controlsfx.control.textfield.TextFields;
-import erando.services.interfaces.IPublicationGroupService;
 
 /**
  * FXML Controller class
@@ -84,14 +86,14 @@ public class Groupe_photosController implements Initializable {
 
     private ImageView selectedimg;
 
-    IPublicationGroupService ps = new PublicationService();
+    IPublicationService ps = new PublicationService();
     IMembreService ms = new MembreService();
     ImageService im = new ImageService();
 
     GroupeService gs = new GroupeService();
     Groupe g = gs.getGroupe(2);
-    Membre m = ms.getUser(2);
-    //ImageG i = im.getImage(2);
+    Membre m = ms.getUser(7);
+    ImageG i = im.getImage(1);
     ImageView imgv;
     Image imagedownold;
     Stage secondStage;
@@ -141,7 +143,7 @@ public class Groupe_photosController implements Initializable {
     }
     
     public void loadImage(){
-            List<ImageG> ls = im.getAllGroupImage(new ImageG(g));
+            List<ImageG> ls = im.getAllGroupImage(i);
 
          FlowPane fl = new FlowPane();
         selectedimg = new ImageView();
@@ -248,7 +250,7 @@ public class Groupe_photosController implements Initializable {
     }
 
     public void loadCoverPhoto() {
-        File file = new File("C:\\Users\\wassim\\Documents\\NetBeansProjects\\ERandoPi\\src\\erando\\images\\" + g.getPhoto_couverture());
+        File file = new File("C:\\Users\\wassim\\Desktop\\" + g.getPhoto_couverture());
         Image image = new Image(file.toURI().toString());
         coverpic.setImage(image);
 

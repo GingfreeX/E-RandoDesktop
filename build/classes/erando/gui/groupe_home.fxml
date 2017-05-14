@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
@@ -22,9 +21,6 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="700.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="homeClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.Groupe_homeController"> 
-    <stylesheets>
-                  <URL value="@/erando/utils/groupe_home.css" />
-     </stylesheets> 
     <top>
       <AnchorPane prefHeight="95.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -58,7 +54,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button id="option" fx:id="changecover" contentDisplay="RIGHT" mnemonicParsing="false" stylesheets="@../utils/groupe_home.css" translateX="514.0">
+                  <Button id="option" fx:id="changecover" contentDisplay="RIGHT" defaultButton="true" mnemonicParsing="false" stylesheets="@../utils/groupe_home.css" translateX="514.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -169,8 +165,9 @@
       <Insets />
    </opaqueInsets>
    <center>
-      <AnchorPane fx:id="anchormain" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <TextField fx:id="txtpublication" layoutX="19.0" layoutY="25.0" prefHeight="37.0" prefWidth="694.0" promptText="Exprimez Vous ..." AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="25.0" />
             <Button layoutX="660.0" layoutY="75.0" mnemonicParsing="false" onAction="#addpublication" style="-fx-background-color: #5cb85c; -fx-text-fill: white; -fx-border-color: #4cae4c; -fx-border-radius: 4px;" text="Publier" textFill="#1b0202" AnchorPane.leftAnchor="654.0" AnchorPane.rightAnchor="22.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -213,8 +210,6 @@
                   </FlowPane>
                </children>
             </AnchorPane>
-            <Button id="btnuploadimg" fx:id="btnupload" layoutX="57.0" layoutY="74.0" mnemonicParsing="false" onAction="#uploadimg" stylesheets="@../utils/groupe_home.css" />
-            <TextArea fx:id="txtpublication" layoutX="21.0" layoutY="23.0" prefHeight="41.0" prefWidth="693.0" promptText="Exprimez vous ..." wrapText="true" />
          </children>
       </AnchorPane>
    </center>

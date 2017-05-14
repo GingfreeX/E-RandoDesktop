@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author wassim
  */
-public interface IImageService extends IGroupService<ImageG, Integer>{
+public interface IImageService extends IService<ImageG, Integer>{
     List<ImageG> getAllGroupImage(ImageG image);
     ImageG getImage(int id );
     List<ImageG> getImagewithId(int id_user,int id_group);

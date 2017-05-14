@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ERandoPi.jnlp">
+  <information>
+    <title>ERandoPi</title>
+    <vendor>wassim</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="ERandoPi.jar" size="17407344" download="eager" />
+    <jar href="lib\GMapsFX-2.11.0.jar" size="149914" download="eager" />
+    <jar href="lib\controlsfx-8.40.12.jar" size="1069145" download="eager" />
+    <jar href="lib\jfoenix-1.2.0.jar" size="2439924" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="860468" download="eager" />
+  </resources>
+<security>
+  <all-permissions/>
+</security>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="ERandoPi" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="erandopi.ERandoPi"  name="ERandoPi" />
+  <update check="always"/>
+</jnlp>

@@ -73,19 +73,7 @@ public class MembreService implements IMembreService {
 
     @Override
     public List<Membre> getAll() {
-    List<Membre> membre = new ArrayList<>();
-        try {
-            String req = "select * from member";
-            PreparedStatement ps = connection.prepareStatement(req);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-              Membre m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
-                membre.add(m);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return membre;    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

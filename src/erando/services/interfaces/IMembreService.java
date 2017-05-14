@@ -14,9 +14,10 @@ import java.util.Map;
  *
  * @author wassim
  */
-public interface IMembreService  extends IGroupService<Membre, Integer>{
+public interface IMembreService  extends IService<Membre, Integer>{
     Membre getUser(int id);
     boolean existemembre( int idmembre);
+
     Map<Integer,String> getUsernamesWithId (String list_amis);
     List<String> getUsernameOnly(Map<Integer,String> m);
     int getUsernameId(Map<Integer,String> m , String username);

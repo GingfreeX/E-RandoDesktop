@@ -3,31 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package erandopi;
 
-import com.jfoenix.controls.JFXDecorator;
+import erando.models.Publication;
+import erando.services.impl.MembreService;
+import erando.services.impl.PublicationService;
+import erando.services.interfaces.IMembreService;
+import erando.services.interfaces.IPublicationService;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
  *
- * @author Ging
+ * @author wassim
  */
 public class ERandoPi extends Application {
-    public static Boolean isSplashLoaded = false;
-
+    
     @Override
     public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/groupe_home.fxml"));
+       stage.setTitle("E-Rando");
+       stage.setResizable(false);
+       stage.centerOnScreen();
+       stage.getIcons().add(new Image(this.getClass().getResource("/erando/images/logo.png").toString()));
+
         
-        Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/FXMLAuthentification.fxml"));
-        JFXDecorator decorator = new JFXDecorator(stage, root);
-        Scene scene = new Scene(decorator,1030,860);
         
-        stage.setScene(scene);
+        Scene scene = new Scene(root);
+                 stage.setScene(scene);
+                 
+       
+        scene.getStylesheets().add("erando/utils/groupe_home.css");
         stage.show();
+        
     }
 
     /**

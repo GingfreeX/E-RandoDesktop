@@ -22,9 +22,9 @@ import erando.services.impl.GroupeService;
 import erando.services.impl.MembreService;
 import erando.services.impl.PublicationService;
 import erando.services.interfaces.IMembreService;
+import erando.services.interfaces.IPublicationService;
 import erando.techniques.Navigation;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
@@ -52,14 +51,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import org.controlsfx.control.textfield.TextFields;
-import erando.services.interfaces.IPublicationGroupService;
 
 /**
  * FXML Controller class
@@ -118,25 +115,19 @@ public class Groupe_membresController implements Initializable, MapComponentInit
     @FXML
     private GoogleMapView GMap;
 
-    @FXML
-    private Pane gmappane;
-
     private GoogleMap gm;
 
     public GeocodingService geocodingService;
-        @FXML
-    private AnchorPane anchormain;
 
-    IPublicationGroupService ps = new PublicationService();
+    IPublicationService ps = new PublicationService();
     IMembreService ms = new MembreService();
     GroupeService gs = new GroupeService();
     Groupe g = gs.getGroupe(2);
-    Membre m = ms.getUser(2);
-    int idcreateur = gs.getIdCreateur(g);
-
+    Membre m = ms.getUser(7);
     List<Membre> lsm = new ArrayList<>();
     String pays = "";
     LatLong latLong = null;
+    
 
     /**
      * Initializes the controller class.
@@ -145,8 +136,8 @@ public class Groupe_membresController implements Initializable, MapComponentInit
     public void initialize(URL url, ResourceBundle rb) {
 
         loadMemberNumber();
-       loadMemberPhoto();
-       loadGroupeDescription();
+        loadMemberPhoto();
+        loadGroupeDescription();
         loadCoverPhoto();
         AutocompleteAddMember();
         changeCoverPhoto();
@@ -156,8 +147,7 @@ public class Groupe_membresController implements Initializable, MapComponentInit
     }
 
     @FXML
-    void gotoPublication(ActionEvent event) throws IOException {
-
+    void gotoPublication(ActionEvent event) {
 
         new Navigation().switchScene("groupe_home.fxml", event);
 
@@ -207,7 +197,7 @@ public class Groupe_membresController implements Initializable, MapComponentInit
     }
 
     public void loadCoverPhoto() {
-        File file = new File("C:\\Users\\wassim\\Documents\\NetBeansProjects\\ERandoPi\\src\\erando\\images\\" + g.getPhoto_couverture());
+        File file = new File("C:\\Users\\wassim\\Desktop\\" + g.getPhoto_couverture());
         Image image = new Image(file.toURI().toString());
         coverpic.setImage(image);
 
@@ -268,39 +258,28 @@ public class Groupe_membresController implements Initializable, MapComponentInit
                 ListCell<Membre> cell = new ListCell<Membre>() {
 
                     @Override
-                    protected void updateItem(Membre me, boolean bool) {
-                        super.updateItem(me, bool);
-                        if (me != null) {
-                            Image im = new Image("erando/images/" + me.getProfil_pic());
+                    protected void updateItem(Membre m, boolean bool) {
+                        super.updateItem(m, bool);
+                        //System.out.println(m);
+                        if (m != null) {
+                            Image im = new Image("erando/images/" + m.getProfil_pic());
                             ImageView imv = new ImageView(im);
                             imv.setFitHeight(70.0);
                             imv.setFitWidth(80.0);
                             imv.setLayoutX(-10.0);
 
                             Button btnsup = new Button("Supprimer");
-                            btnsup.setVisible(false);
-                            btnsup.setId((String.valueOf(me.getId())));
+                            btnsup.setText("Supprimer");
+                            btnsup.setId((String.valueOf(m.getId())));
                             btnsup.translateXProperty().setValue(580.0);
                             btnsup.translateYProperty().setValue(15.0);
                             btnsup.getStyleClass().add("btnsup");
-                            // si user connecte est admin
-                            if (me.getId() != idcreateur) {
-                                btnsup.setVisible(true);
-                            }
-                            // si user connecte n'est pas admin
-                            if (m.getId() != idcreateur) {
-                                btnsup.setVisible(false);
-                            }
-                            
-                          
 
                             listmembre.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Membre>() {
 
                                 @Override
                                 public void changed(ObservableValue<? extends Membre> observable, Membre oldValue, Membre newValue) {
                                     btnsup.translateXProperty().setValue(300.0);
-                                    infopanel.setVisible(true);
-                                    gmappane.setVisible(true);
                                 }
                             });
 
@@ -331,7 +310,7 @@ public class Groupe_membresController implements Initializable, MapComponentInit
                             });
 
                             Label username = new Label();
-                            username.setText(me.getUsername());
+                            username.setText(m.getUsername());
                             username.setFont(Font.font("family", 18));
                             username.translateYProperty().setValue(15.0);
 
@@ -367,6 +346,7 @@ public class Groupe_membresController implements Initializable, MapComponentInit
                 lblmail.setText(listmembre.getSelectionModel().selectedItemProperty().getValue().getEmail());
                 lblpays.setText(listmembre.getSelectionModel().selectedItemProperty().getValue().getPays());
                 userimgdetail.setImage(new Image("erando/images/" + listmembre.getSelectionModel().selectedItemProperty().getValue().getProfil_pic()));
+
                 pays = listmembre.getSelectionModel().selectedItemProperty().getValue().getPays();
                 if (pays != "") {
 
@@ -388,10 +368,12 @@ public class Groupe_membresController implements Initializable, MapComponentInit
 
                         mapInitialized();
                     });
-                } else {
+                }
+                else{
                     pays = listmembre.getSelectionModel().selectedItemProperty().getValue().getPays();
 
                 }
+                infopanel.setVisible(true);
 
             }
 

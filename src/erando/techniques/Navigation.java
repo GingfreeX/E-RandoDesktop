@@ -6,36 +6,26 @@
 package erando.techniques;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 
 /**
  *
- * @author cimope
+ * @author wassim
  */
 public  class  Navigation {
-    private   Parent parent ;
-    private   Scene scene;
-    private  Stage stage;
-   private ActionEvent event;
-    private static Navigation navigation;
-    public Navigation(){
-        
+
+    public Navigation() {
     }
-    public   void  switching(String fxmlfile,Stage s ) throws IOException{
-       this.parent = FXMLLoader.load(getClass().getResource(fxmlfile));
-        this.scene = new Scene(this.parent);
-       this.stage = s;
-        this.stage.hide();
-        this.stage.setScene(this.scene);
-        this.stage.show();
     
-        
-    }
+    
     public void switchScene(String fxmlfile,ActionEvent event){
         
         try {
@@ -49,12 +39,10 @@ public  class  Navigation {
             scene.getStylesheets().add("erando/utils/groupe_home.css");
             stage.show();
         } catch (IOException ex) {
+            Logger.getLogger(Navigation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static Navigation getInstance() {
-        if (navigation  == null) {
-            navigation  = new Navigation ();
-        }
-        return navigation;
-    }
+    
+    
+    
 }
