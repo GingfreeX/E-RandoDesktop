@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1024.0" style="-fx-background-color: #fffdfd;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erandopi.controllers.GestionGuidesController">
+   <children>
+      <TableView fx:id="listGuides" layoutX="66.0" layoutY="136.0" prefHeight="333.0" prefWidth="744.0">
+        <columns>
+          <TableColumn fx:id="Nom" prefWidth="160.0" text="Nom" />
+          <TableColumn fx:id="Prenom" prefWidth="152.0" text="Prenom" />
+            <TableColumn fx:id="email" prefWidth="241.0" text="E-mail" />
+            <TableColumn fx:id="Statut" prefWidth="190.0" text="Statut" />
+        </columns>
+      </TableView>
+      <Label layoutX="66.0" layoutY="102.0" prefHeight="34.0" prefWidth="299.0" text="Les Guides de E-Rando">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="retour" layoutX="14.0" layoutY="661.0" onAction="#Retour" style="-fx-background-color: #ff672b;" text="Retour" textFill="WHITE" />
+      <JFXButton fx:id="bannir" layoutX="747.0" layoutY="481.0" onAction="#bannirGuide" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #ff672b;" text="Bannir" textFill="WHITE" />
+      <Pane prefHeight="95.0" prefWidth="1024.0" style="-fx-background-color: #aba3a3;">
+         <children>
+            <ImageView fitHeight="89.0" fitWidth="67.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../erando/images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="63.0" layoutY="31.0" prefHeight="62.0" prefWidth="126.0" text="E-Rando">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="905.0" layoutY="36.0" prefHeight="48.0" prefWidth="112.0" text="Admin">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="95.0" fitWidth="84.0" layoutX="815.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../erando/images/anonymous.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="932.0" layoutY="102.0" prefHeight="17.0" prefWidth="92.0" text="Profile  /  Guides" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
+      <JFXButton fx:id="approuv" layoutX="653.0" layoutY="481.0" onAction="#approuvGuide" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #ff672b;" text="Approuver" textFill="WHITE" />
+   </children>
+</AnchorPane>
