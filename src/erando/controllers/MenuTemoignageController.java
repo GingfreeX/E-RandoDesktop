@@ -49,17 +49,17 @@ public class MenuTemoignageController implements Initializable {
     
     @FXML
     void btnAffich(ActionEvent event) throws IOException {
-changescene("/erandopi/gui/AfficheTemoignage.fxml",event);
+changescene("/erando/gui/AfficheTemoignage.fxml",event);
     }
 
     @FXML
     void btnAvis(ActionEvent event) throws IOException {
-changescene("/erandopi/gui/AjoutTemoignage.fxml",event);
+changescene("/erando/gui/AjoutTemoignage.fxml",event);
     }
 
     @FXML
     void btnModif(ActionEvent event) throws IOException {
-changescene("/erandopi/gui/ModifTemoignage.fxml",event);
+changescene("/erando/gui/ModifTemoignage.fxml",event);
     }
 
     @Override

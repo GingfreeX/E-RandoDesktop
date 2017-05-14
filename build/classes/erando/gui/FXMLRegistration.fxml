@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.FXMLRegitrationController">
+   <children>
+      <JFXTextField fx:id="pseudo" focusColor="#ff672b" layoutX="227.0" layoutY="187.0" prefHeight="25.0" prefWidth="344.0">
+         <unFocusColor>
+            <RadialGradient centerX="0.3222222222222222" centerY="0.35714285714285715" radius="0.5">
+               <stops>
+                  <Stop color="#dd8628" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </unFocusColor></JFXTextField>
+      <Label layoutX="55.0" layoutY="179.0" text="Pseudo">
+         <font>
+            <Font name="Agency FB" size="33.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="email" focusColor="#ff672b" layoutX="227.0" layoutY="263.0" prefHeight="25.0" prefWidth="344.0">
+         <unFocusColor>
+            <RadialGradient centerX="0.37222222222222223" centerY="0.41428571428571426" radius="0.5">
+               <stops>
+                  <Stop color="#ff7e2b" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </unFocusColor></JFXTextField>
+      <Label layoutX="63.0" layoutY="256.0" text="Email ">
+         <font>
+            <Font name="Agency FB" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="327.0" text="mot de passe ">
+         <font>
+            <Font name="Agency FB" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="307.0" prefHeight="25.0" prefWidth="122.0" />
+      <Label layoutX="32.0" layoutY="386.0" text="Répeter le mot de passe">
+         <font>
+            <Font name="Agency FB" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="147.0" layoutY="518.0" onAction="#RegisterAction" prefHeight="61.0" prefWidth="385.0" style="-fx-background-color: #ff672b;" text="S'inscrire" textFill="#fff9f9">
+         <font>
+            <Font name="Euphemia" size="37.0" />
+         </font>
+      </JFXButton>
+      <JFXPasswordField fx:id="password1" focusColor="#ff672b" layoutX="236.0" layoutY="332.0" prefHeight="28.0" prefWidth="325.0">
+         <unFocusColor>
+            <RadialGradient centerX="0.3222222222222222" centerY="0.35714285714285715" radius="0.5">
+               <stops>
+                  <Stop color="#dd8628" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </unFocusColor></JFXPasswordField>
+      <JFXPasswordField fx:id="password2" focusColor="#ff672b" layoutX="244.0" layoutY="388.0" prefHeight="28.0" prefWidth="310.0">
+         <unFocusColor>
+            <RadialGradient centerX="0.3055555555555556" centerY="0.3952380952380952" radius="0.5">
+               <stops>
+                  <Stop color="#ff7e2b" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </unFocusColor></JFXPasswordField>
+      <ImageView fitHeight="104.0" fitWidth="76.0" layoutX="160.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="270.0" layoutY="57.0" prefHeight="61.0" prefWidth="344.0" text="Inscription à E-Rando">
+         <font>
+            <Font name="Bodoni MT Condensed" size="51.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="role" focusColor="#ff672b" layoutX="285.0" layoutY="464.0" prefHeight="25.0" prefWidth="137.0">
+         <unFocusColor>
+            <RadialGradient centerX="0.5" centerY="0.4095238095238095" radius="0.5">
+               <stops>
+                  <Stop color="#ff9e2b" />
+                  <Stop color="#ff672b" offset="0.6254295532646048" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </unFocusColor>
+      </JFXComboBox>
+      <Label layoutX="29.0" layoutY="458.0" text="S'inscrir en tant que ">
+         <font>
+            <Font name="Agency FB" size="31.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="23.0" layoutY="606.0" onAction="#back" style="-fx-background-color: #ff672b;" text="&lt;&lt; retour" />
+   </children>
+</AnchorPane>

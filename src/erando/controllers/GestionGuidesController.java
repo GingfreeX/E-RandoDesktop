@@ -66,7 +66,7 @@ GuideService service = new GuideService();
         System.out.println(listGuides.getSelectionModel().selectedItemProperty().getValue().getIdguide());
         service.ApprouvGuide(listGuides.getSelectionModel().getSelectedItem());
 
-        changescene("/erandopi/gui/GestionGuides.fxml", event);
+        changescene("/erando/gui/GestionGuides.fxml", event);
 
            Notifications notificationBuilder = Notifications.create()
                 .title("OK")
@@ -83,7 +83,7 @@ GuideService service = new GuideService();
         System.out.println(listGuides.getSelectionModel().selectedItemProperty().getValue().getIdguide());
         service.BannGuide(listGuides.getSelectionModel().getSelectedItem());
 
-        changescene("/erandopi/gui/GestionGuides.fxml", event);
+        changescene("/erando/gui/GestionGuides.fxml", event);
            Notifications notificationBuilder = Notifications.create()
                 .title("OK")
                 .text("Le guide a été Banni")
@@ -98,7 +98,7 @@ GuideService service = new GuideService();
 
     @FXML
     void Retour(ActionEvent event) throws IOException {
-        changescene("/erandopi/gui/AdminProfile.fxml", event);
+        changescene("/erando/gui/AdminProfile.fxml", event);
     }
     List lst = new ArrayList<>();
     GuideService tm = new GuideService();

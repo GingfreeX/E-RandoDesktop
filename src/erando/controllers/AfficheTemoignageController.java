@@ -89,7 +89,7 @@ public class AfficheTemoignageController implements Initializable {
 
         tem.update(Temoignage);
 
-        Parent parent3 = FXMLLoader.load(getClass().getResource("/erandopi/gui/AfficheTemoignage.fxml"));
+        Parent parent3 = FXMLLoader.load(getClass().getResource("/erando/gui/AfficheTemoignage.fxml"));
         Scene scene3 = new Scene(parent3);
         Stage stage3 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -105,7 +105,7 @@ public class AfficheTemoignageController implements Initializable {
         TemoignageService service = new TemoignageService();
         System.out.println(AvisT.getSelectionModel().selectedItemProperty().getValue().getId());
         service.delete(AvisT.getSelectionModel().getSelectedItem().getId());
-        changescene("/erandopi/gui/AfficheTemoignage.fxml", event);
+        changescene("/erando/gui/AfficheTemoignage.fxml", event);
         Notifications notificationBuilder = Notifications.create()
                 .title("Ok")
                 .text("Votre Avis a été supprimé")
@@ -153,7 +153,7 @@ public class AfficheTemoignageController implements Initializable {
 
     @FXML
     void btnRetour(ActionEvent event) throws IOException {
-        changescene("/erandopi/gui/MenuTemoignage.fxml", event);
+        changescene("/erando/gui/MenuTemoignage.fxml", event);
 
     }
 

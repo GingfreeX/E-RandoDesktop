@@ -22,7 +22,7 @@ public class ERandoPi extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-        Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/FXMLAuthentification.fxml"));
         JFXDecorator decorator = new JFXDecorator(stage, root);
         Scene scene = new Scene(decorator,1030,860);
         

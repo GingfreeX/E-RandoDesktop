@@ -89,8 +89,11 @@ void LoginAction(ActionEvent event) throws IOException {
        }else{
        if(userservice.CheckRole(user).equals("guide")){
           Navigation.getInstance().switching("/erando/gui/FXMLGuideProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
-       }else{
-            Navigation.getInstance().switching("/erando/gui/FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+       }else if (userservice.CheckRole(user).equals("membre")){
+          Navigation.getInstance().switching("/erando/gui/FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+       }
+       else {
+          Navigation.getInstance().switching("/erando/gui/AdminProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
        }
 
       

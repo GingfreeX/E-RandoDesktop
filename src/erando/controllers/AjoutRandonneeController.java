@@ -348,7 +348,7 @@ String destination = txdestination.getText();
              
                   StackPane box = null;
         try {
-            box = FXMLLoader.load(getClass().getResource("SidePanelContent.fxml"));
+            box = FXMLLoader.load(getClass().getResource("/erando/gui/SidePanelContent.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(AjoutRandonneeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -372,7 +372,7 @@ String destination = txdestination.getText();
 
     @Override
     public void start(Stage stage) throws Exception {
- Parent root = FXMLLoader.load(getClass().getResource("ajoutRandonnee.fxml"));
+ Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/ajoutRandonnee.fxml"));
         
         Scene scene = new Scene(root);
         

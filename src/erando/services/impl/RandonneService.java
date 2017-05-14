@@ -33,7 +33,7 @@ public class RandonneService implements IRandonneService {
         
         
         try {
-            String req = "insert into randonne(titre, destination,date,prix,age_min,description,moyen_transport,type,plan,liste_inscrits,image,nbr_places,point_depart,niveau) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String req = "insert into randonnee(titre, destination,date,prix,age_min,description,moyen_transport,type,plan,liste_inscrits,image,nbr_places,point_depart,niveau) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(req);
            ps.setString(1, t.getTitre());
            ps.setString(2, t.getDestination());
@@ -59,7 +59,7 @@ public class RandonneService implements IRandonneService {
     @Override
     public void update(Randonne t) {
  try {
-            String req = "update randonne set titre=?, destination=?,date=?,prix=?,age_min=?,description=?,moyen_transport=?,type=?,plan=?,liste_inscrits=?,nbr_places=?,point_depart=?,niveau=?  where id = ?";
+            String req = "update randonnee set titre=?, destination=?,date=?,prix=?,age_min=?,description=?,moyen_transport=?,type=?,plan=?,liste_inscrits=?,nbr_places=?,point_depart=?,niveau=?  where id = ?";
            
 // String req = "update randonne set titre=?, destination=?,date=?,prix=?,age_min=?,description=?,moyen_transport=?,type=?,plan=?,liste_inscrits=?,nbr_places=?,point_depart=?,niveau=?  where id = ?";
             PreparedStatement ps = connection.prepareStatement(req);
@@ -86,7 +86,7 @@ public class RandonneService implements IRandonneService {
     @Override
     public void delete(Integer id) {
          try {
-            String req = "delete from randonne where id =?";
+            String req = "delete from randonnee where id =?";
             PreparedStatement ps = connection.prepareStatement(req);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -99,7 +99,7 @@ public class RandonneService implements IRandonneService {
     public List<Randonne> getAll() {
  List<Randonne> randos = new ArrayList<>();
         try {
-            String req = "select * from randonne";
+            String req = "select * from randonnee";
             PreparedStatement ps = connection.prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -118,7 +118,7 @@ public class RandonneService implements IRandonneService {
     public Randonne findById(Integer id) {
  Randonne rando = null;
         try {
-            String req = "select * from randonne where id =?";
+            String req = "select * from randonnee where id =?";
             PreparedStatement ps = connection.prepareStatement(req);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -132,7 +132,7 @@ public class RandonneService implements IRandonneService {
         return rando;    }
     
      public List<Randonne> rechercherannonceselontrajet(String depart, String arrivee, Date date) {
-  String req = "select * from randonne where point_depart LIKE ? or destination LIKE ? or date LIKE ? ";
+  String req = "select * from randonnee where point_depart LIKE ? or destination LIKE ? or date LIKE ? ";
         List<Randonne> annonces = new ArrayList<>();
         try {
           PreparedStatement  ps = connection.prepareStatement(req);

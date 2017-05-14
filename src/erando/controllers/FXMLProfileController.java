@@ -89,7 +89,15 @@ public class FXMLProfileController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/erando/gui/FXMLInformationPersonnelles.fxml"));
         maincontainer.setContent(pane);
     }
-
+     @FXML
+    void shop(ActionEvent event) throws IOException {
+    Navigation.getInstance().switching("/erando/gui/FXMLDocument.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+    }
+     @FXML
+    void events(ActionEvent event) throws IOException {
+    Navigation.getInstance().switching("/erando/gui/affichelisteRandonnee.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+    }
+    
     @FXML
     void postarticleAction(ActionEvent event) throws IOException {
 
@@ -118,6 +126,12 @@ public class FXMLProfileController implements Initializable {
 
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/erando/gui/FXMLchat.fxml"));
         maincontainer.setContent(pane);
+
+    }
+    @FXML
+    void group(ActionEvent event) throws IOException {
+
+   Navigation.getInstance().switching("/erando/gui/groupe_home.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
 
     }
 

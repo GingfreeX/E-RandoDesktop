@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1032.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.EditProductController">
+   <stylesheets>
+      <URL value="@/erando/utils/editproduct.css" />
+   </stylesheets>
+   <children>
+      <ImageView fitHeight="84.0" fitWidth="68.0" layoutX="783.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/edit.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="68.0" layoutX="789.0" layoutY="632.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/delete.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="530.0" onAction="#editProductAction" opacity="0.0" prefHeight="68.0" prefWidth="56.0">
+         <font>
+            <Font name="Segoe Marker" size="28.0" />
+         </font></JFXButton>
+      <Label layoutX="239.0" layoutY="123.0" prefHeight="20.0" prefWidth="120.0" text="Description" textFill="#e67e22">
+         <font>
+            <Font name="Segoe Marker" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="239.0" layoutY="357.0" prefHeight="17.0" prefWidth="68.0" text="Type" textFill="#e67e22">
+         <font>
+            <Font name="Segoe Marker" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="239.0" layoutY="60.0" prefHeight="29.0" prefWidth="56.0" text="Titre" textFill="#e67e22">
+         <font>
+            <Font name="Segoe Marker" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="239.0" layoutY="292.0" prefHeight="20.0" prefWidth="68.0" text="Prix" textFill="#e67e22">
+         <font>
+            <Font name="Segoe Marker" size="28.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="pTitre" focusColor="#e67e22" layoutX="448.0" layoutY="60.0" prefHeight="29.0" prefWidth="184.0" style="-fx-background-color: #ffffff;" />
+      <JFXTextField fx:id="pPrix" focusColor="#e67e22" layoutX="448.0" layoutY="292.0" prefHeight="29.0" prefWidth="184.0" style="-fx-background-color: #ffffff;" />
+      <JFXListView fx:id="editList" layoutX="828.0" onMouseClicked="#handleMouseClick" prefHeight="366.0" prefWidth="202.0" />
+      <JFXTextArea fx:id="pDescription" focusColor="#e67e22" layoutX="448.0" layoutY="127.0" prefHeight="137.0" prefWidth="325.0" style="-fx-background-color: #ffffff;" />
+      <JFXButton fx:id="newPhotoButton" buttonType="RAISED" layoutX="501.0" layoutY="654.0" onAction="#uploadPictureAction" prefHeight="43.0" prefWidth="161.0" style="-fx-background-color: #e67e22;" text="Modifier Photo" textFill="WHITE">
+         <font>
+            <Font name="Segoe Marker" size="23.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="pImage" fitHeight="219.0" fitWidth="287.0" layoutX="448.0" layoutY="413.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton buttonType="RAISED" layoutX="783.0" layoutY="632.0" onAction="#removeProductAction" opacity="0.0" prefHeight="84.0" prefWidth="68.0">
+         <font>
+            <Font name="Segoe Marker" size="28.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="pType" focusColor="#e67e22" layoutX="448.0" layoutY="366.0" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #ffffff;" />
+   </children>
+</AnchorPane>

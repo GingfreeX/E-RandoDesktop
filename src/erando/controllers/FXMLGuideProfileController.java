@@ -68,7 +68,20 @@ public class FXMLGuideProfileController implements Initializable {
  maincontainer.setContent(pane);
         
     }
-    
+     @FXML
+  public     void ajouterEvent(ActionEvent event) throws IOException {
+
+ AnchorPane pane =  FXMLLoader.load(getClass().getResource("/erando/gui/ajoutRandonnee.fxml"));
+ maincontainer.setContent(pane);
+        
+    }
+   @FXML
+  public     void afficherEvents(ActionEvent event) throws IOException {
+
+ AnchorPane pane =  FXMLLoader.load(getClass().getResource("/erando/gui/listeRandonnee.fxml"));
+ maincontainer.setContent(pane);
+        
+    }
    
     @FXML
   public     void ViewAllArticles(ActionEvent event) throws IOException {
@@ -76,6 +89,16 @@ public class FXMLGuideProfileController implements Initializable {
  AnchorPane pane =  FXMLLoader.load(getClass().getResource("/erando/gui/FXMLListArticles.fxml"));
  maincontainer.setContent(pane);
      
+    }
+   @FXML
+    void shop(ActionEvent event) throws IOException {
+
+        Navigation.getInstance().switching("/erando/gui/FXMLDocument.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+    }
+    @FXML
+    void events(ActionEvent event) throws IOException {
+
+        Navigation.getInstance().switching("/erando/gui/ajoutRandonnee.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
     }
    @FXML
   public  void LogoutAction(ActionEvent event) throws IOException {

@@ -53,7 +53,7 @@ public class AdminProfileController implements Initializable {
         rootP = anchropane;
         try {
 
-            VBox box = FXMLLoader.load(getClass().getResource("/erandopi/gui/DrawerContent.fxml"));
+            VBox box = FXMLLoader.load(getClass().getResource("/erando/gui/DrawerContent.fxml"));
 
             Drawer.setSidePane(box);
 

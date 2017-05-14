@@ -24,7 +24,12 @@ public class Membre {
 
     public Membre() {
     }
-
+    public Membre(int Id, String username, String pays, String email) {
+        this.id = Id;
+        this.username = username;
+        this.pays = pays;
+        this.email = email;
+    }
     public Membre(int id) {
         this.id = id;
     }

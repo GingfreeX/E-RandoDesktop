@@ -373,7 +373,7 @@ else {
                     public void handle(MouseEvent event) {
                         try {
                               RecupererIdRando.setIdRando(annonce.getId());
-                            Navigation.getInstance().switching("InterfaceRando.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+                            Navigation.getInstance().switching("/erando/gui/InterfaceRando.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
                         } catch (IOException ex) {
                             Logger.getLogger(AffichelisteRandonneeController.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -424,7 +424,7 @@ else {
              } catch (IOException ex) {
                  Logger.getLogger(AffichelisteRandonneeController.class.getName()).log(Level.SEVERE, null, ex);
              }
-                         StackPane box = FXMLLoader.load(getClass().getResource("SidePanelContentUser.fxml"));
+                         StackPane box = FXMLLoader.load(getClass().getResource("/erando/gui/SidePanelContentUser.fxml"));
 
              //AnchorPane box = FXMLLoader.load(getClass().getResource("menuRando.fxml"));
              drawer.setSidePane(box);
@@ -449,7 +449,7 @@ else {
 
     @Override
     public void start(Stage stage) throws Exception {
-Parent root = FXMLLoader.load(getClass().getResource("affichelisteRandonnee.fxml"));
+Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/affichelisteRandonnee.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -610,7 +610,7 @@ File file=null;
                     public void handle(MouseEvent event) {
                         try {
                               RecupererIdRando.setIdRando(annonce.getId());
-                            Navigation.getInstance().switching("InterfaceRando.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+                            Navigation.getInstance().switching("/erando/gui/InterfaceRando.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
                         } catch (IOException ex) {
                             Logger.getLogger(AffichelisteRandonneeController.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -649,7 +649,7 @@ File file=null;
      {
           ActionEvent event = new ActionEvent() ;
                           Parent creerGroupe;
-                        creerGroupe = FXMLLoader.load(getClass().getResource("InterfaceRando.fxml"));
+                        creerGroupe = FXMLLoader.load(getClass().getResource("/erando/gui/InterfaceRando.fxml"));
                           Scene sceneAffichage = new Scene(creerGroupe);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
        

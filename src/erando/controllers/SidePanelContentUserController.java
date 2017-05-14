@@ -46,19 +46,20 @@ public class SidePanelContentUserController  {
    @FXML
     void listeReserve(ActionEvent event) throws IOException {
             //Navigation.getInstance().switching(, s);
-            Navigation.getInstance().switching("ReservationByuser.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+            Navigation.getInstance().switching("/erando/gui/ReservationByuser.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
 
     }
     @FXML
     void accueilRando(ActionEvent event) throws IOException {
-                    Navigation.getInstance().switching("affichelisteRandonnee.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+                    Navigation.getInstance().switching("/erando/gui/affichelisteRandonnee.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
 
     }
     
     
     @FXML
-    private void exit(ActionEvent event) {
-        System.exit(0);
+    private void back(ActionEvent event) throws IOException {
+     Navigation.getInstance().switching("/erando/gui/FXMLProfile.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+
     }
 
   

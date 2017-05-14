@@ -217,7 +217,7 @@ public class InterfaceRandoController extends Application implements Initializab
     }
     @FXML
     void returnAction(ActionEvent event) throws IOException {
-                            Navigation.getInstance().switching("affichelisteRandonnee.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+                            Navigation.getInstance().switching("/erando/gui/affichelisteRandonnee.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
 
     }
     @FXML
@@ -237,7 +237,7 @@ public class InterfaceRandoController extends Application implements Initializab
         System.out.println("hello");
         genererpdf();
         envoyerfacture();
-          Parent creerGroupe = FXMLLoader.load(getClass().getResource("InterfaceRando.fxml"));
+          Parent creerGroupe = FXMLLoader.load(getClass().getResource("/erando/gui/InterfaceRando.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         
@@ -398,7 +398,7 @@ citere4Label.setImage(new Image("http://localhost/covoituragetn/"+parts[3]));*/
 
     @Override
     public void start(Stage stage) throws Exception {
-     Parent root = FXMLLoader.load(getClass().getResource("InterfaceRando.fxml"));
+     Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/InterfaceRando.fxml"));
         
         Scene scene = new Scene(root);
         

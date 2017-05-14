@@ -77,9 +77,9 @@ public class GestionMembresController implements Initializable {
     void setcelltable() {
         
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
-        username_canonical.setCellValueFactory(new PropertyValueFactory<>("username_canonical"));
-        description.setCellValueFactory(new PropertyValueFactory<>("description"));
-
+        username_canonical.setCellValueFactory(new PropertyValueFactory<>("pays"));
+        description.setCellValueFactory(new PropertyValueFactory<>("email"));
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         lst = tm.getAll();
         ObservableList<Membre> ob = FXCollections.observableArrayList(lst);
 
@@ -94,7 +94,7 @@ public class GestionMembresController implements Initializable {
         service.delete(tableMembres.getSelectionModel().getSelectedItem().getId());
         
         
-         changescene("/erandopi/gui/GestionMembres.fxml", event);
+         changescene("/erando/gui/GestionMembres.fxml", event);
   
                 Notifications notificationBuilder = Notifications.create()
                 .title("OK")
@@ -119,7 +119,7 @@ public class GestionMembresController implements Initializable {
     }
     @FXML
     void retourAction(ActionEvent event) throws IOException {
-        changescene("/erandopi/gui/AdminProfile.fxml", event);
+        changescene("/erando/gui/AdminProfile.fxml", event);
     }
     void changescene(String gui, ActionEvent event) throws IOException {
         FXMLLoader fxmlloder = new FXMLLoader(getClass().getResource(gui));

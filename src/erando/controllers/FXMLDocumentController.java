@@ -26,6 +26,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javax.xml.bind.annotation.XmlElementDecl;
 import erando.services.interfaces.IShopService;
+import javafx.stage.Stage;
 /**
  *
  * @author F.Mouhamed
@@ -102,8 +103,17 @@ public class FXMLDocumentController implements Initializable {
                     }
                 }
                         break;
-                    case "Exit":
-                        
+                    case "Back":
+                {
+                    try {
+                        window.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("/erando/gui/FXMLProfile.fxml")));
+                    } catch (IOException ex) {
+                        Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                        drawer.close();
+                        transition.setRate(transition.getRate()*-1);
+                        transition.play();
+                }
                         break;
               
                 }

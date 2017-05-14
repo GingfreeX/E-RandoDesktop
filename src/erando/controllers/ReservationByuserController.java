@@ -126,7 +126,7 @@ rando1.update(randonne1);
         System.out.println("aaaaaaaaywah");
 res.delete(id);
         System.out.println("finish him");
-          Parent creerGroupe = FXMLLoader.load(getClass().getResource("ReservationByuser.fxml"));
+          Parent creerGroupe = FXMLLoader.load(getClass().getResource("/erando/gui/ReservationByuser.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         
@@ -240,7 +240,7 @@ res.delete(id);
         
         try {
           
-                         StackPane box = FXMLLoader.load(getClass().getResource("SidePanelContentUser.fxml"));
+                         StackPane box = FXMLLoader.load(getClass().getResource("/erando/gui/SidePanelContentUser.fxml"));
 
              //AnchorPane box = FXMLLoader.load(getClass().getResource("menuRando.fxml"));
              drawer.setSidePane(box);
@@ -283,7 +283,7 @@ res.delete(id);
         
     @Override
     public void start(Stage stage) throws Exception {
-       Parent root = FXMLLoader.load(getClass().getResource("ReservationByuser.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/erando/gui/ReservationByuser.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../images/theme.css").toExternalForm());

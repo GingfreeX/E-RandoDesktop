@@ -54,7 +54,7 @@ public class ModifTemoignageController implements Initializable {
 
     @FXML
     void btnRetour(ActionEvent event) throws IOException {
-changescene("/erandopi/gui/MenuTemoignage.fxml",event);
+changescene("/erando/gui/MenuTemoignage.fxml",event);
 
     }
     @FXML

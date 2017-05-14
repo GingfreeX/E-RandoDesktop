@@ -1,0 +1,17 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.cdescription {
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+    -fx-display-caret:true;
+}
+
+.cdescription .content {
+    -fx-background-color: #e67e22;
+}
+#comment {
+    -fx-background-color: #e67e22;
+}

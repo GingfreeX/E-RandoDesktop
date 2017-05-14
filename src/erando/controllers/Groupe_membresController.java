@@ -159,13 +159,13 @@ public class Groupe_membresController implements Initializable, MapComponentInit
     void gotoPublication(ActionEvent event) throws IOException {
 
 
-        new Navigation().switchScene("/erando/gui/groupe_home.fxml", event);
+        new Navigation().switchScene("groupe_home.fxml", event);
 
     }
 
     @FXML
     void gotoPhotos(ActionEvent event) {
-        new Navigation().switchScene("/erando/gui/groupe_photos.fxml", event);
+        new Navigation().switchScene("groupe_photos.fxml", event);
     }
 
     @FXML
@@ -232,7 +232,7 @@ public class Groupe_membresController implements Initializable, MapComponentInit
 
                             lblmsgmember.translateXProperty().setValue(30);
                             txtsearch.setText("");
-                            new Navigation().switchScene("/erando/gui/groupe_membres.fxml", event);
+                            new Navigation().switchScene("groupe_membres.fxml", event);
 
                         } else {
                             lblmsgmember.setText("Membre existe deja");
@@ -323,7 +323,7 @@ public class Groupe_membresController implements Initializable, MapComponentInit
                                         info.setContentText("Ce Membre est supprimée avec success");
 
                                         info.showAndWait();
-                                        new Navigation().switchScene("/erando/gui/groupe_membres.fxml", event);
+                                        new Navigation().switchScene("groupe_membres.fxml", event);
 
                                     }
 

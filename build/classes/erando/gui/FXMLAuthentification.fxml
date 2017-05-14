@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="container" prefHeight="663.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.FXMLAuthentificationController">
+    <children>
+      <Pane fx:id="maincontainer" layoutX="-14.0" layoutY="-23.0" prefHeight="686.0" prefWidth="710.0">
+         <children>
+            <JFXButton layoutX="523.0" layoutY="645.0" onAction="#movetoRegistration" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #ff8533;" text="S'inscrire &gt;&gt;" textFill="#fff3f3">
+               <font>
+                  <Font name="Calibri Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXPasswordField fx:id="password" focusColor="#ff672b" layoutX="151.0" layoutY="440.0" prefHeight="53.0" prefWidth="428.0">
+               <unFocusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#542c15" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </unFocusColor>
+            </JFXPasswordField>
+            <Label layoutX="155.0" layoutY="396.0" text="Mot de passe ">
+               <font>
+                  <Font name="Agency FB" size="36.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="login" focusColor="#ff672b" layoutX="148.0" layoutY="331.0" prefHeight="45.0" prefWidth="428.0">
+               <unFocusColor>
+                  <RadialGradient centerX="0.5" centerY="0.4857142857142857" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="#e1661f" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </unFocusColor>
+            </JFXTextField>
+            <Label layoutX="148.0" layoutY="277.0" prefHeight="54.0" prefWidth="218.0" text="Login">
+               <font>
+                  <Font name="Agency FB" size="42.0" />
+               </font>
+            </Label>
+            <Label layoutX="297.0" layoutY="179.0" prefHeight="53.0" prefWidth="238.0" text="E-Rando">
+               <font>
+                  <Font name="Bodoni MT Condensed" size="51.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imageview" fitHeight="213.0" fitWidth="155.0" layoutX="286.0" layoutY="-34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="298.0" layoutY="609.0" onAction="#ForgetPassword" prefHeight="25.0" prefWidth="163.0" text="Mot de passe oublier ?" textFill="#0b64e1" />
+            <JFXButton layoutX="236.0" layoutY="530.0" onAction="#LoginAction" prefHeight="71.0" prefWidth="287.0" style="-fx-background-color: #ff944d;" text="Se Connecter" textFill="#f5f0f0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
+    </children>
+</AnchorPane>

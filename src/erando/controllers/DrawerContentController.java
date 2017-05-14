@@ -62,7 +62,7 @@ public class DrawerContentController implements Initializable {
 
             case "Membres": {
                 System.out.println(btn.getText());
-                AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/erandopi/gui/GestionMembres.fxml"));
+                AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/erando/gui/GestionMembres.fxml"));
                 AdminProfileController.rootP.getChildren().clear();
                 AdminProfileController.rootP.getChildren().setAll(pane1);
 
@@ -78,7 +78,7 @@ public class DrawerContentController implements Initializable {
         switch (btn.getText()) {
             case "Guides": {
                 System.out.println(btn.getText());
-                AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/erandopi/gui/GestionGuides.fxml"));
+                AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/erando/gui/GestionGuides.fxml"));
                 AdminProfileController.rootP.getChildren().clear();
                 AdminProfileController.rootP.getChildren().setAll(pane1);
 
@@ -95,7 +95,7 @@ public class DrawerContentController implements Initializable {
         switch (btn.getText()) {
             case "Produit": {
                 System.out.println(btn.getText());
-                AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/erandopi/gui/AfficheTemoignage.fxml"));
+                AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/erando/gui/AfficheTemoignage.fxml"));
                 AdminProfileController.rootP.getChildren().clear();
                 AdminProfileController.rootP.getChildren().setAll(pane1);
 
@@ -133,7 +133,7 @@ public class DrawerContentController implements Initializable {
         switch (btn.getText()) {
             case "Statistiques": {
                 System.out.println(btn.getText());
-                AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/erandopi/FXMLDocument.fxml"));
+                AnchorPane pane1 = FXMLLoader.load(getClass().getResource(""));
                 AdminProfileController.rootP.getChildren().clear();
                 AdminProfileController.rootP.getChildren().setAll(pane1);
 
