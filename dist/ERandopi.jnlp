@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ERandopi.jnlp">
+  <information>
+    <title>ERandopi</title>
+    <vendor>cimope</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="ERandopi.jar" size="2839397" download="eager" />
+    <jar href="lib\GMapsFX-2.0.9.jar" size="166541" download="eager" />
+    <jar href="lib\activation.jar" size="124332" download="eager" />
+    <jar href="lib\com.lowagie.text-2.1.7.jar" size="1782376" download="eager" />
+    <jar href="lib\controlsfx-8.40.12.jar" size="996389" download="eager" />
+    <jar href="lib\datafx-8.0b8.jar" size="261" download="eager" />
+    <jar href="lib\flow-8.0b8.jar" size="63203" download="eager" />
+    <jar href="lib\fontawesomefx-8.0.10.jar" size="108930" download="eager" />
+    <jar href="lib\itextpdf-5.1.0.jar" size="1614453" download="eager" />
+    <jar href="lib\java-mail-1.4.4.jar" size="494975" download="eager" />
+    <jar href="lib\jfoenix.jar" size="2454308" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="ERandopi" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="erandopi.ERandopi"  name="ERandopi" />
+  <update check="always"/>
+</jnlp>
