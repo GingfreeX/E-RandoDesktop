@@ -5,7 +5,7 @@
  */
 package erando.tests;
 
-import erando.Product;
+import erando.models.Product;
 import erando.models.ProductComment;
 import erando.services.impl.ProductCommentService;
 import erando.services.impl.ProductService;

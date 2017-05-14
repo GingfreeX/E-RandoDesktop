@@ -7,9 +7,10 @@ package erando.controllers;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import erando.models.PublicationGroup;
+import erando.models.Publication;
 import erando.models.User;
 import erando.services.impl.PublicationServices;
+import erando.services.interfaces.IPublicationService;
 import erando.services.interfaces.IService;
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +37,6 @@ import static jdk.nashorn.internal.runtime.Debug.id;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.validation.ValidationMessage;
 import org.controlsfx.validation.ValidationSupport;
-import erando.services.interfaces.IPublicationGroupService;
 
 /**
  * FXML Controller class
@@ -46,15 +46,15 @@ import erando.services.interfaces.IPublicationGroupService;
 public class FXMLListArticlesController implements Initializable {
 
     @FXML
-    private TableView<PublicationGroup> tableview;
+    private TableView<Publication> tableview;
     
     @FXML
-    private TableColumn<PublicationGroup, String> sectioncolumn;
+    private TableColumn<Publication, String> sectioncolumn;
 
     @FXML
-    private TableColumn<PublicationGroup, String> Descriptioncolumn;
+    private TableColumn<Publication, String> Descriptioncolumn;
      @FXML
-    private TableColumn<PublicationGroup, String> imagecolumn;
+    private TableColumn<Publication, String> imagecolumn;
     
  
     @FXML
@@ -72,7 +72,7 @@ public class FXMLListArticlesController implements Initializable {
     @FXML
     void DeleteButton(ActionEvent event) {
 int id = Integer.parseInt(hiddenid.getText());
-    IPublicationGroupService publicationservice = new PublicationServices();
+    IPublicationService publicationservice = new PublicationServices();
     publicationservice.delete(id);
    tableview.getColumns().get(0).setVisible(false);
    tableview.getColumns().get(0).setVisible(true);
@@ -102,8 +102,8 @@ int id = Integer.parseInt(hiddenid.getText());
   validationSupport.getValidationDecorator().applyValidationDecoration(ValidationMessage.error(description, "required name"));
 
       }else{
-        IPublicationGroupService publicationservice = new PublicationServices();
-        PublicationGroup publication = publicationservice.getPublicationById(Integer.parseInt(hiddenid.getText()));
+        IPublicationService publicationservice = new PublicationServices();
+        Publication publication = publicationservice.getPublicationById(Integer.parseInt(hiddenid.getText()));
         publication.setSection(Section.getValue());
          publication.setDescription(description.getText()); if(selectedfile==null){
         publication.setImagepath(null);
@@ -137,7 +137,7 @@ int id = Integer.parseInt(hiddenid.getText());
                 "chasse","peche","camping"
         );
     tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection)->{
-      ObservableList<PublicationGroup>   selecteditem,allitems;
+      ObservableList<Publication>   selecteditem,allitems;
       allitems = tableview.getItems();
        selecteditem = tableview.getSelectionModel().getSelectedItems();
        
@@ -158,13 +158,13 @@ int id = Integer.parseInt(hiddenid.getText());
     public void LoadData(){
         
     }
-    public ObservableList<PublicationGroup> getMyPublications(){
+    public ObservableList<Publication> getMyPublications(){
         int id = User.getIdofuserAlreadyloggedin();
         IService publicationsService = new PublicationServices();
-         List<PublicationGroup> List1 = publicationsService.getAll();
-        List <PublicationGroup> List2 = List1.stream().filter(x->x.getUser().getId()==id).collect(Collectors.toList());
+         List<Publication> List1 = publicationsService.getAll();
+        List <Publication> List2 = List1.stream().filter(x->x.getUser().getId()==id).collect(Collectors.toList());
           List2.forEach(System.out::println);
-         ObservableList<PublicationGroup> listpub =FXCollections.observableArrayList(List2);
+         ObservableList<Publication> listpub =FXCollections.observableArrayList(List2);
    return  listpub ;
         
     }

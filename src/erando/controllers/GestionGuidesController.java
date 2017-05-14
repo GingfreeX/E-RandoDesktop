@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.controllers;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import erandopi.models.Guide;
+import erando.models.Guide;
 
-import erandopi.services.impl.GuideService;
-import erandopi.services.impl.MembreService;
+import erando.services.impl.GuideService;
+import erando.services.impl.MembreService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,8 +31,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import org.controlsfx.control.Notifications;
+
 
 /**
  * FXML Controller class
@@ -67,8 +68,14 @@ GuideService service = new GuideService();
 
         changescene("/erandopi/gui/GestionGuides.fxml", event);
 
-        TrayNotification tray = new TrayNotification("OK", "Le guide a été Approuvé", NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.seconds(3));
+           Notifications notificationBuilder = Notifications.create()
+                .title("OK")
+                .text("Le guide a été Approuvé")
+                .graphic(null)
+                .hideAfter(Duration.seconds(4))
+                .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.showConfirm();
     }
     @FXML
     void bannirGuide(ActionEvent event) throws IOException {
@@ -77,9 +84,14 @@ GuideService service = new GuideService();
         service.BannGuide(listGuides.getSelectionModel().getSelectedItem());
 
         changescene("/erandopi/gui/GestionGuides.fxml", event);
-
-        TrayNotification tray = new TrayNotification("OK", "Le guide a été Banni", NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.seconds(3));
+           Notifications notificationBuilder = Notifications.create()
+                .title("OK")
+                .text("Le guide a été Banni")
+                .graphic(null)
+                .hideAfter(Duration.seconds(4))
+                .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.showConfirm();
     }
     @FXML
     private JFXButton retour;

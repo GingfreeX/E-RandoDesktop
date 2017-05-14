@@ -10,7 +10,6 @@ package erando.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-import erando.chat.client.Status;
 
 /**
  *
@@ -32,7 +31,6 @@ public class User implements Serializable{
     private String email; 
     private static int idofuserAlreadyloggedin;
     private static String myemail;
-    private Status status;
 
 
     public User() {
@@ -42,13 +40,25 @@ public class User implements Serializable{
         this.nom = name;
         this.email = email;
     }
-
-
+     public User(int x, String nom) {
+        this.id = x;
+        this.nom = nom;
+    }
+     public User(int x) {
+        this.id = x;
+        
+    }
     public User(String name, String password, String email,String Role) {
         this.nom = name;
         this.password = password;
         this.email = email;
         this.Role=Role;
+    }
+    public User(int x, String nom, String prenom,String email) {
+        this.id = x;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email=email;
     }
 
      public User(String name, String password, String email) {
@@ -214,14 +224,7 @@ public class User implements Serializable{
         this.numTel = numTel;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
+  
 
 
 

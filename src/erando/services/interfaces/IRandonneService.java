@@ -5,7 +5,7 @@
  */
 package erando.services.interfaces;
 
-import erando.models.Randonne;
+import erando.controllers.Randonne;
 
 /**
  *

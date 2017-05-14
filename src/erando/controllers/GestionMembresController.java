@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.controllers;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import erandopi.models.Membre;
-import erandopi.models.Temoignage;
-import erandopi.services.impl.MembreService;
-import erandopi.services.impl.TemoignageService;
+import erando.models.Membre;
+import erando.models.Temoignage;
+import erando.services.impl.MembreService;
+import erando.services.impl.TemoignageService;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,6 +29,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,12 +40,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import org.controlsfx.control.Notifications;
+
 
 /**
  * FXML Controller class
@@ -83,7 +80,7 @@ public class GestionMembresController implements Initializable {
         username_canonical.setCellValueFactory(new PropertyValueFactory<>("username_canonical"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-        lst = tm.getAll2();
+        lst = tm.getAll();
         ObservableList<Membre> ob = FXCollections.observableArrayList(lst);
 
         tableMembres.setItems(ob);
@@ -98,8 +95,15 @@ public class GestionMembresController implements Initializable {
         
         
          changescene("/erandopi/gui/GestionMembres.fxml", event);
-        TrayNotification tray = new TrayNotification("OK", "Le Membre a été supprimé", NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.seconds(3));
+  
+                Notifications notificationBuilder = Notifications.create()
+                .title("OK")
+                .text("Le Membre a été supprimé")
+                .graphic(null)
+                .hideAfter(Duration.seconds(4))
+                .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.showConfirm();
     }
     @FXML
     private JFXButton Exporter;
@@ -107,46 +111,6 @@ public class GestionMembresController implements Initializable {
     @FXML
     void Exporter(ActionEvent event) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
         
-        Class.forName("com.mysql.jdbc.Driver");
-      Connection connect = DriverManager.getConnection( 
-      "jdbc:mysql://localhost:3306/e-rando2" , 
-      "root" , 
-      ""
-      );
-      Statement statement = connect.createStatement();
-      ResultSet resultSet = statement
-      .executeQuery("select * from member");
-      XSSFWorkbook workbook = new XSSFWorkbook(); 
-      XSSFSheet spreadsheet = workbook
-      .createSheet("Membre");
-      XSSFRow row=spreadsheet.createRow(1);
-      XSSFCell cell;
-      cell=row.createCell(1);
-      cell.setCellValue("username");
-      cell=row.createCell(2);
-      cell.setCellValue("username_canonical");
-      cell=row.createCell(3);
-      cell.setCellValue("description");
-
-      int i=2;
-      while(resultSet.next())
-      {
-         row=spreadsheet.createRow(i);
-         cell=row.createCell(1);
-         cell.setCellValue(resultSet.getString("username"));
-         cell=row.createCell(2);
-         cell.setCellValue(resultSet.getString("username_canonical"));
-         cell=row.createCell(3);
-         cell.setCellValue(resultSet.getString("description"));
-
-         i++;
-      }
-      FileOutputStream out = new FileOutputStream(
-      new File("Membre.xlsx"));
-      workbook.write(out);
-      out.close();
-      System.out.println(
-      "Membre.xlsx written successfully");
 
     }
     @Override

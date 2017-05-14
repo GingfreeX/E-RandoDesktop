@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erando.gui;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -32,8 +32,8 @@ import com.lynden.gmapsfx.service.directions.DirectionsService;
 import com.lynden.gmapsfx.service.directions.DirectionsServiceCallback;
 import com.lynden.gmapsfx.service.directions.TravelModes;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
-import erando.models.Randonne;
-import erando.models.Reservation;
+import erando.controllers.Randonne;
+import erando.controllers.Reservation;
 import erando.models.User;
 import erando.services.impl.RandonneService;
 import erando.services.impl.ReservationService;
@@ -323,7 +323,7 @@ public class InterfaceRandoController extends Application implements Initializab
         System.out.println(RecupererIdRando.getIdRando());
          mapView.addMapInializedListener((MapComponentInitializedListener) this);
         popupList.depthProperty().set(1);
-        popup.setPopupContainer(root);
+        popup.setPopupContent(root);
 
         setAnnonceDetails();
        
@@ -363,7 +363,7 @@ citere4Label.setImage(new Image("http://localhost/covoituragetn/"+parts[3]));*/
 
     
     }
-    @Override
+    
     public void mapInitialized() {
   MapOptions options = new MapOptions();
 

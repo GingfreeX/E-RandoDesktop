@@ -5,7 +5,7 @@
  */
 package erando.services.impl;
 
-import erando.models.Randonne;
+import erando.controllers.Randonne;
 import erando.services.interfaces.IRandonneService;
 import erando.techniques.DataSource;
 import java.sql.Connection;

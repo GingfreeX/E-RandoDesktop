@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erando.gui;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import com.lynden.gmapsfx.GoogleMapView;
@@ -133,7 +133,7 @@ System.out.println("testettstst");
         mapView.addMapInializedListener(this);
     }    
 
-    @Override
+    
     public void mapInitialized() {
 geocodingService = new GeocodingService();
         MapOptions options = new MapOptions();
@@ -148,7 +148,7 @@ geocodingService = new GeocodingService();
         directionsPane = mapView.getDirec(); 
     }
 
-    @Override
+    
     public void directionsReceived(DirectionsResult dr, DirectionStatus ds) {
 
  DirectionsResult e = dr;

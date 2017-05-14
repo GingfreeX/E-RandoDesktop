@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.services.interfaces;
+package erando.services.interfaces;
 import java.util.List;
-import erandopi.models.Guide;
+import erando.models.Guide;
 /**
  *
  * @author student1

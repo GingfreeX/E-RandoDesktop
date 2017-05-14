@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erando.models;
+package erando.controllers;
 
 import java.sql.Date;
 import java.util.Objects;

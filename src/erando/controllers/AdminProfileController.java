@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.controllers;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXDrawer;
 
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-import erandopi.controllers.DrawerContentController;
+import erando.controllers.DrawerContentController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

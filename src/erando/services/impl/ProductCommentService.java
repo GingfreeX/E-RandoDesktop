@@ -5,7 +5,7 @@
  */
 package erando.services.impl;
 
-import erando.Product;
+import erando.models.Product;
 import erando.models.ProductComment;
 import erando.techniques.DataSource;
 import java.sql.Connection;

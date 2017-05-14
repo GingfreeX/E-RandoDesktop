@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.controllers;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-import erandopi.models.Temoignage;
-import erandopi.services.impl.TemoignageService;
-import erandopi.services.interfaces.ITemoignageService;
+import erando.models.Temoignage;
+import erando.services.impl.TemoignageService;
+import erando.services.interfaces.ITemoignageService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,8 +26,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import org.controlsfx.control.Notifications;
+
 
 /**
  * FXML Controller class
@@ -57,8 +58,14 @@ changescene("/erandopi/gui/MenuTemoignage.fxml",event);
         TemoignageService temoignageService = new TemoignageService();
         Temoignage temoignage = new Temoignage(txt_Temoignage.getText());
    temoignageService.add(temoignage);
-TrayNotification tray = new TrayNotification("Tres bien", "Votre Avis a été Ajouté", NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.seconds(3));
+             Notifications notificationBuilder = Notifications.create()
+                .title("Ok")
+                .text("Votre Avis a été Ajouté")
+                .graphic(null)
+                .hideAfter(Duration.seconds(4))
+                .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.showConfirm();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

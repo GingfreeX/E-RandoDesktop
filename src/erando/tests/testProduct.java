@@ -5,7 +5,7 @@
  */
 package erando.tests;
 
-import erando.Product;
+import erando.models.Product;
 import erando.services.impl.ProductService;
 import erando.techniques.DataSource;
 import java.sql.Connection;

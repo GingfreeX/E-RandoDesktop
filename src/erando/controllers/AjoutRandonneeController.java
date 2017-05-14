@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erando.gui;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -27,7 +27,7 @@ import com.lynden.gmapsfx.service.directions.DirectionsServiceCallback;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
-import erando.models.Randonne;
+import erando.controllers.Randonne;
 import erando.services.impl.RandonneService;
 import java.io.File;
 
@@ -384,7 +384,7 @@ String destination = txdestination.getText();
         launch(args);
     }
 
-    @Override
+    
     public void mapInitialized() {
         
             // geocodingService = new GeocodingService();
@@ -402,7 +402,7 @@ geocodingService = new GeocodingService();
         directionsPane = mapView.getDirec();        
     }
 
-    @Override
+    
     public void directionsReceived(DirectionsResult dr, DirectionStatus ds) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

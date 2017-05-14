@@ -5,8 +5,8 @@
  */
 package erando.services.impl;
 
-import erando.models.Randonne;
-import erando.models.Reservation;
+import erando.controllers.Randonne;
+import erando.controllers.Reservation;
 import erando.models.User;
 import erando.services.interfaces.IReservationService;
 import erando.techniques.DataSource;

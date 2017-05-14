@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erando.gui;
+package erando.controllers;
 
 
 import com.jfoenix.controls.JFXButton;
@@ -13,8 +13,8 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
-import erando.models.Randonne;
-import erando.models.Reservation;
+import erando.controllers.Randonne;
+import erando.controllers.Reservation;
 import erando.services.impl.RandonneService;
 import erando.services.impl.ReservationService;
 import java.io.ByteArrayOutputStream;

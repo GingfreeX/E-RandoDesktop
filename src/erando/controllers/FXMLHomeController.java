@@ -5,7 +5,7 @@
  */
 package erando.controllers;
 
-import erando.models.PublicationGroup;
+import erando.models.Publication;
 import erando.models.User;
 import erando.services.impl.PublicationServices;
 import erando.services.interfaces.IService;
@@ -69,9 +69,9 @@ public class FXMLHomeController implements Initializable {
 
     public void loadpublication() {
         IService publicationservices = new PublicationServices();
-        List<PublicationGroup> listdespublication = publicationservices.getAll();
+        List<Publication> listdespublication = publicationservices.getAll();
 
-        for (PublicationGroup pub : listdespublication) {
+        for (Publication pub : listdespublication) {
             lblusername = new Label("Publier Par :  " + pub.getUser().getNom());
             lbldescription = new Label(pub.getDescription());
 

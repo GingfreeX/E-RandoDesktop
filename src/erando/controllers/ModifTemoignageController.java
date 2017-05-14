@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.controllers;
+package erando.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import erandopi.models.Temoignage;
-import erandopi.services.impl.TemoignageService;
+import erando.models.Temoignage;
+import erando.services.impl.TemoignageService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,14 +21,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import org.controlsfx.control.Notifications;
+
 
 /**
  * FXML Controller class
@@ -62,8 +63,15 @@ changescene("/erandopi/gui/MenuTemoignage.fxml",event);
         TemoignageService service = new TemoignageService();
         int id=comboboxListT.getValue();
         service.delete(id);
-     TrayNotification tray = new TrayNotification("Tres bien", "Votre avis a été supprimé", NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.seconds(3));      
+  
+          Notifications notificationBuilder = Notifications.create()
+                .title("Tres bien")
+                .text("Votre avis a été supprimé")
+                .graphic(null)
+                .hideAfter(Duration.seconds(4))
+                .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.showConfirm();
     }
 
     @FXML
@@ -85,8 +93,15 @@ changescene("/erandopi/gui/MenuTemoignage.fxml",event);
         
 
         service.update2(a,id);
-        TrayNotification tray = new TrayNotification("Tres bien", "Votre avis a été modifié", NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.seconds(3)); 
+  
+         Notifications notificationBuilder = Notifications.create()
+                .title("Tres bien")
+                .text("Votre avis a été modifié")
+                .graphic(null)
+                .hideAfter(Duration.seconds(4))
+                .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.darkStyle();
+                notificationBuilder.showConfirm();
     }
     /**
      * Initializes the controller class.

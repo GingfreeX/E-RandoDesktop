@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erando.gui;
+package erando.techniques;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -23,7 +23,7 @@ public  class  Navigation {
     private  Stage stage;
    private ActionEvent event;
     private static Navigation navigation;
-    private Navigation(){
+    public Navigation(){
         
     }
     public   void  switching(String fxmlfile,Stage s ) throws IOException{
@@ -35,6 +35,21 @@ public  class  Navigation {
         this.stage.show();
     
         
+    }
+    public void switchScene(String fxmlfile,ActionEvent event){
+        
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/erando/gui/"+fxmlfile));
+            
+            Scene scene = new Scene(parent);
+            
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.hide();
+            stage.setScene(scene);
+            scene.getStylesheets().add("erando/utils/groupe_home.css");
+            stage.show();
+        } catch (IOException ex) {
+        }
     }
     public static Navigation getInstance() {
         if (navigation  == null) {

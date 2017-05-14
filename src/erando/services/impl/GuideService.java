@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.services.impl;
+package erando.services.impl;
 
-import erandopi.models.Guide;
-import erandopi.services.interfaces.IGuideService;
-import erandopi.techniques.DataSource;
+import erando.models.Guide;
+import erando.services.interfaces.IGuideService;
+import erando.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -88,7 +88,6 @@ public class GuideService implements IGuideService{
     }  
   
   
-  @Override
     public Guide findById(Integer id) {
  Guide guide = null;
         try {

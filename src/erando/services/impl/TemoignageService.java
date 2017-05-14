@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erandopi.services.impl;
+package erando.services.impl;
 
-import erandopi.models.Temoignage;
-import erandopi.services.interfaces.ITemoignageService;
-import erandopi.techniques.DataSource;
+import erando.models.Temoignage;
+import erando.services.interfaces.ITemoignageService;
+import erando.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -100,7 +100,7 @@ public class TemoignageService implements ITemoignageService {
         return temoin;
     }
 
-    @Override
+    
     public Temoignage findById(Integer id) {
         Temoignage temoin = null;
         try {
