@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="663.0" prefWidth="989.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erando.controllers.FXMLGuideProfileController">
+     <children>
+      <Pane layoutY="116.0" prefHeight="548.0" prefWidth="239.0" style="-fx-background-color: #ccddff;">
+         <children>
+            <ImageView fx:id="profilepic" fitHeight="180.0" fitWidth="196.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/anonymous.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="idl" layoutX="36.0" layoutY="231.0" prefHeight="41.0" prefWidth="180.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <VBox layoutY="277.0" prefHeight="207.0" prefWidth="239.0">
+               <children>
+                  <JFXButton onAction="#UpdateParametersAction" prefHeight="43.0" prefWidth="235.0" style="-fx-background-color: #3377ff;" text="Modifier mes parametres personnelles">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </JFXButton>
+                  <JFXButton onAction="#postarticleAction" prefHeight="49.0" prefWidth="235.0" style="-fx-background-color: #3377ff;" text="Publier un article" textFill="#f8f3f3" />
+                  <JFXButton layoutX="10.0" layoutY="53.0" onAction="#ViewAllArticles" prefHeight="49.0" prefWidth="235.0" style="-fx-background-color: #3377ff;" text="Voir mes Articles" textFill="#f8f3f3" />
+                  <JFXButton prefHeight="49.0" prefWidth="235.0" style="-fx-background-color: #3377ff;" text="Ajouter un Evenement " textFill="#f8f3f3" />
+                  <JFXButton prefHeight="27.0" prefWidth="235.0" style="-fx-background-color: #3377ff;" text="Voir mes Evenements " textFill="#f8f3f3" />
+               </children>
+            </VBox>
+            <FontAwesomeIconView glyphName="USER" layoutX="14.0" layoutY="258.0" size="20" />
+         </children>
+      </Pane>
+      <Pane layoutX="-1.0" prefHeight="128.0" prefWidth="990.0" style="-fx-background-color: #eaeafb;">
+         <children>
+            <ImageView fitHeight="118.0" fitWidth="129.0" layoutX="14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="445.0" layoutY="79.0" prefHeight="50.0" prefWidth="100.0" text="Amis" />
+            <JFXButton layoutX="528.0" layoutY="83.0" onAction="#DisplayPersonnaInformations" prefHeight="43.0" prefWidth="118.0" text="Mes Informations" />
+            <JFXButton layoutX="655.0" layoutY="83.0" prefHeight="35.0" prefWidth="100.0" text="Messagerie" />
+            <JFXButton layoutX="754.0" layoutY="79.0" onAction="#LogoutAction" prefHeight="50.0" prefWidth="100.0" text="Deconnecter" />
+            <JFXButton layoutX="350.0" layoutY="76.0" onAction="#LoadHomeScene" prefHeight="57.0" prefWidth="124.0" text="Acceuil" />
+            <JFXButton layoutX="754.0" layoutY="79.0" onAction="#LogoutAction" prefHeight="50.0" prefWidth="100.0" text="Deconnecter" />
+            <JFXButton layoutX="350.0" layoutY="76.0" prefHeight="57.0" prefWidth="124.0" text="Acceuil" />
+            <FontAwesomeIconView glyphName="HOME" layoutX="388.0" layoutY="81.0" size="50" wrappingWidth="48.42856979370117" />
+            <FontAwesomeIconView glyphName="USERS" layoutX="474.0" layoutY="77.0" size="40" />
+            <FontAwesomeIconView glyphName="USER" layoutX="577.0" layoutY="80.0" size="50" />
+            <FontAwesomeIconView glyphName="COMMENTS" layoutX="682.0" layoutY="79.0" size="45" />
+            <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="783.0" layoutY="79.0" size="45" />
+            <Label layoutX="121.0" layoutY="32.0" prefHeight="61.0" prefWidth="212.0" text="E-Rando:Guide">
+               <font>
+                  <Font name="Bodoni MT Condensed" size="51.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <ScrollPane fx:id="maincontainer" layoutX="239.0" layoutY="128.0" prefHeight="536.0" prefWidth="751.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

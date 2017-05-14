@@ -109,7 +109,7 @@ public class FXMLProfileController implements Initializable {
     @FXML
     void LogoutAction(ActionEvent event) throws IOException {
         User.setIdofuserAlreadyloggedin(0);
-        Navigation.getInstance().switching("FXMLAuthentification.fxml", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        Navigation.getInstance().switching("/erando/gui/FXMLAuthentification.fxml", (Stage) ((Node) event.getSource()).getScene().getWindow());
 
     }
 

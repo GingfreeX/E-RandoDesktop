@@ -69,7 +69,7 @@ public class FXMLResetPasswordController implements Initializable {
     
     @FXML
     void backtoauth(ActionEvent event) throws IOException {
-    Navigation.getInstance().switching("FXMLAuthentification.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+    Navigation.getInstance().switching("/erando/gui/FXMLAuthentification.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
 
     }
     

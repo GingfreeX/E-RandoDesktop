@@ -45,7 +45,7 @@ public class FXMLRessetingPasswordCheckCodeController implements Initializable {
         String email = User.getMyemail();
         User user = userservice.getUserByEmail(email);
         if(userservice.CheckToken(user,Code.getText())==true){
-       Navigation.getInstance().switching("FXMLResetPassword.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+       Navigation.getInstance().switching("/erando/gui/FXMLResetPassword.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
 
         }else{
               Notifications NotificationBuilder = Notifications.create()

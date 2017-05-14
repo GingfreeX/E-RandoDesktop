@@ -54,7 +54,7 @@ public class FXMLRegitrationController implements Initializable {
     private JFXComboBox<String> role;
  @FXML
     void back(ActionEvent event) throws IOException {
-            Navigation.getInstance().switching("FXMLAuthentification.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+            Navigation.getInstance().switching("/erando/gui/FXMLAuthentification.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
 
     }   
     
@@ -92,7 +92,7 @@ public class FXMLRegitrationController implements Initializable {
         User user = new User(pseudo.getText(),password, email.getText(),role.getValue());
         userservice.add(user);
         User.setMyemail(email.getText());
-        Navigation.getInstance().switching("FXMLConfirmAccount.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+        Navigation.getInstance().switching("/erando/gui/FXMLConfirmAccount.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
         Notifications NotificationBuilder = Notifications.create()
                                 .title("Succée")
                                 .text("un email à été envoyer à l'adresse "+email.getText()+" contien un code de confirmation "

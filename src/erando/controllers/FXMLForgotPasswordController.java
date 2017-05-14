@@ -47,7 +47,7 @@ validationSupport.getValidationDecorator().applyValidationDecoration(ValidationM
                 if(userservice.CheckIfUserExist(email.getText())==true){
                 userservice.SendMailAndAddTokenToUser(user,token);
                 User.setMyemail(email.getText());
-                   Navigation.getInstance().switching("FXMLRessetingPasswordCheckCode.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+                   Navigation.getInstance().switching("/erando/gui/FXMLRessetingPasswordCheckCode.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
                    Notifications NotificationBuilder = Notifications.create()
                                 .title("error")
                                 .text("un mail est envoyer à l'adresse   "+email.getText()+"   contient un code de confirmation Veuiller verifier votre boite mail")
@@ -89,7 +89,7 @@ validationSupport.getValidationDecorator().applyValidationDecoration(ValidationM
                 if(userservice.CheckIfUserExist(email.getText())==true){
                 userservice.SendSMSAndAddTokenToUser(token,user);
                   User.setMyemail(email.getText());
-                   Navigation.getInstance().switching("FXMLRessetingPasswordCheckCode.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+                   Navigation.getInstance().switching("/erando/gui/FXMLRessetingPasswordCheckCode.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
                    Notifications NotificationBuilder = Notifications.create()
                                 .title("error")
                                 .text("un code de récuperation vous a était  envoyer par SMS  ")
@@ -119,7 +119,7 @@ validationSupport.getValidationDecorator().applyValidationDecoration(ValidationM
     
     @FXML
     void backtoauth(ActionEvent event) throws IOException {
-    Navigation.getInstance().switching("FXMLAuthentification.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+    Navigation.getInstance().switching("/erando/gui/FXMLAuthentification.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

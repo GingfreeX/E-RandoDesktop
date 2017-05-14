@@ -84,13 +84,13 @@ void LoginAction(ActionEvent event) throws IOException {
        int id = User.getIdofuserAlreadyloggedin();
        User user = userservice.getUserbyId(id);
        if(userservice.checkEnabled(user)==false){
-   Navigation.getInstance().switching("FXMLConfirmAccount.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+   Navigation.getInstance().switching("/erando/gui/FXMLConfirmAccount.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
 
        }else{
        if(userservice.CheckRole(user).equals("guide")){
-          Navigation.getInstance().switching("FXMLGuideProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+          Navigation.getInstance().switching("/erando/gui/FXMLGuideProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
        }else{
-            Navigation.getInstance().switching("FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+            Navigation.getInstance().switching("/erando/gui/FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
        }
 
       
@@ -108,14 +108,14 @@ void LoginAction(ActionEvent event) throws IOException {
      @FXML
     void movetoRegistration(ActionEvent event) throws IOException {
       
-      Navigation.getInstance().switching("FXMLRegistration.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+      Navigation.getInstance().switching("/erando/gui/FXMLRegistration.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
 
        
     }
     
     @FXML
     void ForgetPassword(ActionEvent event) throws IOException {
-    Navigation.getInstance().switching("FXMLForgotPassword.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+    Navigation.getInstance().switching("/erando/gui/FXMLForgotPassword.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
     }
 
     

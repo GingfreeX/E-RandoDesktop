@@ -114,9 +114,9 @@ public class FXMLUpdateProfileController implements Initializable {
          userservice.update(user1);
          User u = userservice.getUserbyId(User.getIdofuserAlreadyloggedin());
          if(u.getRole().equals("a:1:{i:0;s:10:\"ROLE_MEMBRE\";}")){
-        Navigation.getInstance().switching("FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
+        Navigation.getInstance().switching("/erando/gui/FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());
     }else{
-             Navigation.getInstance().switching("FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());   
+             Navigation.getInstance().switching("/erando/gui/FXMLProfile.fxml",(Stage)((Node)event.getSource()).getScene().getWindow());   
          }
          Notifications NotificationBuilder = Notifications.create()
                                 .title("Succée")
@@ -132,7 +132,7 @@ public class FXMLUpdateProfileController implements Initializable {
      @FXML
     void backtoprofile(ActionEvent event) throws IOException {
      
-         Navigation.getInstance().switching("FXMLProfile.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+         Navigation.getInstance().switching("/erando/gui/FXMLProfile.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
     }
 
 

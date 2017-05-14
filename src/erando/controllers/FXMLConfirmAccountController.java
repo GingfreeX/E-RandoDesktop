@@ -69,7 +69,7 @@ public class FXMLConfirmAccountController implements Initializable {
     
     @FXML
     void back(ActionEvent event) throws IOException {
-   Navigation.getInstance().switching("FXMLAuthentification.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
+   Navigation.getInstance().switching("/erando/gui/FXMLAuthentification.fxml", (Stage)((Node)event.getSource()).getScene().getWindow());
 
     }
     @Override
