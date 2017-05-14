@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1024.0" style="-fx-background-color: #fffdfd;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erandopi.FXMLDocumentController">
+    <children>
+      <BarChart fx:id="barChart" layoutX="154.0" layoutY="178.0" prefHeight="446.0" prefWidth="646.0" title="Statistiques des Randonnées">
+        <xAxis>
+          <CategoryAxis fx:id="X" label="Type de randonnées" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="Y" label="Niveau de difficulté" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button fx:id="btnLoad" layoutX="697.0" layoutY="612.0" mnemonicParsing="false" onAction="#loadChart" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #ff672b;" text="Load" textFill="#fffdfd" />
+      <Button fx:id="btnExport" layoutX="203.0" layoutY="612.0" mnemonicParsing="false" onAction="#exportPDF" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #ff672b;" text="Export" textFill="WHITE" />
+      <Label layoutX="40.0" layoutY="117.0" prefHeight="62.0" prefWidth="200.0" text="Statistiques">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="retour" layoutX="14.0" layoutY="661.0" onAction="#RetourAction" style="-fx-background-color: #ff672b;" text="Retour" textFill="WHITE" />
+      <Pane prefHeight="95.0" prefWidth="1034.0" style="-fx-background-color: #aba3a3;">
+         <children>
+            <ImageView fitHeight="89.0" fitWidth="67.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../erando/images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="63.0" layoutY="31.0" prefHeight="62.0" prefWidth="126.0" text="E-Rando">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="905.0" layoutY="36.0" prefHeight="48.0" prefWidth="112.0" text="Admin">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="95.0" fitWidth="84.0" layoutX="815.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../erando/images/anonymous.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="908.0" layoutY="108.0" prefHeight="17.0" prefWidth="126.0" text="Profile  /  Statistiques" AnchorPane.topAnchor="100.0" />
+    </children>
+   <cursor>
+      <Cursor fx:constant="SW_RESIZE" />
+   </cursor>
+</AnchorPane>
